@@ -1,0 +1,31 @@
+<div class="row" >
+    <div class="col-md-10">
+        <nb-card class= "nb-card">
+            <nb-card-header>
+                <h2 class="topic animate__bounceInDown">Settings</h2>
+            </nb-card-header>
+            <nb-card-body>
+                <form>
+                <div class="form-group row">
+                    <label for="apkVersion" class="label col-sm-3 col-form-label"> APK version <span class="red">*</span></label>
+                    <div class="col-sm-9">
+                        <input name="apkVersion" type="number" nbInput fullWidth placeholder="enter the APK version" >
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="apkUrl" class="label col-sm-3 col-form-label"> APK URL <span class="red">*</span></label>
+                    <div class="col-sm-9">
+                        <input name="apkUrl" type="text" nbInput fullWidth placeholder="APK Url" disabled >
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="offset-sm-3 col-sm-9">
+                        <button type="submit" nbButton status="primary" style="margin-right: 10px;"> Save</button>
+                        <button type="button" nbButton status="danger"> Cancel </button>
+                    </div>
+                </div>
+            </form>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>

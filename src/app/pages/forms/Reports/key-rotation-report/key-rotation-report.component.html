@@ -1,0 +1,146 @@
+<!-- <div class="row">
+  <div class="col-md-12">
+    <nb-card class="inline-form-card">
+      <nb-card-header>Inline form</nb-card-header>
+      <nb-card-body>
+        <form class="form-inline">
+          <input type="text" nbInput fullWidth placeholder="Jane Doe">
+          <input type="text" nbInput fullWidth placeholder="Email">
+          <nb-checkbox>Remember me</nb-checkbox>
+          <button type="submit" nbButton status="primary">Submit</button>
+        </form>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div> -->
+<nb-card class="nb-card animate__zoomIn" [ngClass]="{'add': animate}" id="contentToConvert">
+    <nb-card-body>
+  <div class="heading">
+    <h2 class="topic animate__bounceInDown">List of device based on the Key rotation by date wise</h2>
+  </div>
+  
+  <!-- <div id="export-buttons">
+    <button >Export to XLS</button>
+    <button >Export to PDF</button>
+  </div> -->
+  <!-- <div class="">
+    <div class="buttons-row button-left">
+      Note :  <span class="dot_yellow"></span>Not Reg <span class="dot_green" ></span>Reg <span class="dot_red"></span> De-Reg
+    </div>
+    <div class="buttons-row button-right">
+      <button primary nbButton status="primary" hero  (click)="registerDevice()">Add Device Detail
+      </button>
+    </div>
+  </div> -->
+  <br/>
+  <div >
+
+        <form  [formGroup]="form" (ngSubmit)="searchreport()">
+
+          <div class="row">
+            <div class="col-xxl-4 col-6">
+              <div class="form-group">
+                <div class="row">
+                  <label for="from_date" class="col-xxl-4 col-3 label col-form-label" style="word-wrap: break-word;">From Date <span class="red-class"> *</span></label>
+      
+                  <div class="col-xxl-8 col-9"> <input nbInput placeholder="From Date" [nbDatepicker]="fromdate" formControlName="fromDate" >
+                    <nb-datepicker #fromdate [max]="max"></nb-datepicker></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xxl-4 col-6">
+              <div class="form-group">
+                <div class="row">
+                  <label for="to_date" class="label col-xxl-3 col-3 col-form-label">To Date <span class="red-class"> *</span></label>
+                  <div class="col-xxl-9 col-9">
+                    <input   nbInput placeholder="To Date" [nbDatepicker]="topicker" formControlName="toDate" >
+          <nb-datepicker #topicker [max]="max"></nb-datepicker>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xxl-4 col-6">
+              <div class="form-group">
+                <div class="row">
+                  <label for="RDsID" class="label col-xxl-3 col-3 col-form-label">RDsID <span class="red-class"> *</span></label>
+                  <div class="col-xxl-9 col-6">
+                    <nb-select  style="width:210px;" id="rdsId"  placeholder="-- Select Make/Model/RDsID --" formControlName="rdsId">
+                      <nb-option value="">-- Select RDsID --</nb-option>
+                      <nb-option *ngFor="let dataModels of dataModel" value="{{ dataModels.id}}">{{ dataModels.rdsId}}</nb-option>
+                    </nb-select>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 row1">
+              <button type="submit" class="search-button" [disabled]="!form.valid">Search</button>
+
+            </div>
+          
+          </div>
+          <!-- <div class="row">
+         
+          <div class="form-group col-12  col-md-4">
+          <label for="from_date" class="label">FromDate <span class="red-class"> *</span></label>
+          <input style="margin-left: 15px;" nbInput placeholder="From Date" [nbDatepicker]="fromdate" formControlName="fromDate" >
+          <nb-datepicker #fromdate [max]="max"></nb-datepicker>
+        </div>
+        <div class="form-group col-12 col-md-4">
+          <label for="to_date" class="label ">To Date <span class="red-class"> *</span></label>
+          <input style="margin-left: 15px;" nbInput placeholder="To Date" [nbDatepicker]="topicker" formControlName="toDate" >
+          <nb-datepicker #topicker [max]="max"></nb-datepicker>
+        </div>
+        <div class="form-group col-12 col-md-4">
+          <label for="RDsID" class="label ">RDsID <span class="red-class"> *</span></label>
+
+          <nb-select style="margin-left: 15px;" id="rdsId"  placeholder="-- Select Make/Model/RDsID --" formControlName="rdsId">
+            <nb-option value="">-- Select RDsID --</nb-option>
+            <nb-option *ngFor="let dataModels of dataModel" value="{{ dataModels.id}}">{{ dataModels.rdsId}}</nb-option>
+          </nb-select>
+        </div>
+        </div>
+          <button type="submit" nbButton status="primary" [disabled]="!form.valid" class="row1">Search</button> -->
+
+        </form>
+      <br>
+          
+
+    <!-- <div class="row1">   
+      <button class="dt-button buttons-print" tabindex="0" aria-controls="DataTables_Table_0" type="button" (click)="captureScreen()"><span>Print</span></button>
+    </div> -->
+    <table datatable [dtOptions]= "dtoptions" class="row-border hover" [dtTrigger]= "dtTrigger" id="database-table">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Model Name</th>
+          <th>Device Code</th>
+          <th>Device Serial No</th>
+          <th>Device ID</th>
+          <th>DATE</th>
+          <th>Platform</th>
+          <!-- <th>Key Rotation DATE</th> -->
+          <th>Root Check</th>
+          <th>Safety Net Check</th>
+          <th>Time Check</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of datas ;let i=index">
+            <td style="width: 1%">{{i+1}}</td>
+            <td>{{ item.modelname }}</td>
+            <td>{{ item.device_code }}</td>
+            <td>{{ item.serial_no }}</td>
+            <td>{{ item.device_id }}</td>
+            <td>{{ item.DATE }}</td>
+            <td>{{ item.device_id }}</td>
+            <!-- <td>{{ item.DATE }}</td> -->
+            <td>{{ (item.root_check) ? 'Yes':'No' }}</td>
+            <td>{{ (item.safetynet_check) ? 'Yes':'No' }}</td>
+            <td>{{ (item.time_check) ? 'Yes':'No' }}</td>            
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</nb-card-body>
+</nb-card>

@@ -1,0 +1,267 @@
+<nb-card id="contentToConvert" class= "nb-card animate__zoomIn" [ngClass]="{'add': animate}">
+    <nb-card-body>
+  <div class="heading">
+    <h2 class="topic animate__bounceInDown">List of devices by Date wise</h2>
+  </div>
+  
+  <!-- <div id="export-buttons">
+    <button >Export to XLS</button>
+    <button >Export to PDF</button>
+  </div> -->
+  <!-- <div class="">
+    <div class="buttons-row button-left">
+      Note :  <span class="dot_yellow"></span>Not Reg <span class="dot_green" ></span>Reg <span class="dot_red"></span> De-Reg
+    </div>
+    <div class="buttons-row button-right">
+      <button primary nbButton status="primary" hero  (click)="registerDevice()">Add Device Detail
+      </button>
+    </div>
+  </div> -->
+  <br/>
+  <div id="database-table">
+    <!-- <div class="row">
+      <div class="col-md-12">
+        <form class="form-inline" [formGroup]="form" (ngSubmit)="searchreport()">
+          <div class="row">
+              <div class="col-md-6">
+                <label for="from_date" class="label col-sm-1 col-form-label">From Date</label>
+                <input nbInput placeholder="From Date" [nbDatepicker]="fromdate" formControlName="fromDate">
+                <nb-datepicker #fromdate [max]="max"></nb-datepicker>
+
+                <label for="to_date" class="label col-sm-1 col-form-label">To Date</label>
+                <input nbInput placeholder="To Picker" [nbDatepicker]="topicker" formControlName="toDate">
+                <nb-datepicker #topicker [max]="max"></nb-datepicker>
+              </div>
+
+            <div class="col-md-6">
+              <label for="serail_no" class="label col-sm-3 col-form-label">Make/Model/RDsID </label>
+              <nb-select fullWidth id="serailNo"  placeholder="-- Select Make/Model/RDsID --" formControlName="serialNo">
+                <nb-option value="">All</nb-option>
+                <nb-option *ngFor="let model_data of modelData" value="{{ model_data.id}}">{{ model_data.companyName +'/'+model_data.name+'/'+model_data.rdsId }}</nb-option>
+              </nb-select>
+
+              <label for="status" class="label col-sm-3 col-form-label">Status</label>
+
+              <nb-select fullWidth id="Status"  placeholder="-- Select Status --" formControlName="registeredDeviceStatus">
+                <nb-option value="">All</nb-option>
+                <nb-option *ngFor="let statusdata of statusData" value="{{ statusdata.id}}">{{ statusdata.name }}</nb-option>
+              </nb-select>
+            </div>  
+           </div>
+          <button type="submit" nbButton status="primary">Search</button>
+        </form>
+      </div>
+    </div>     -->
+     
+          <form  [formGroup]="form" (ngSubmit)="searchreport()">
+
+            <div class="row">
+              <div class="col-6">
+                <div class="form-group row">
+                  <label for="from_date" class="label col-3 col-form-label">From Date <span class="red-class">*</span></label>
+                  <div class="col-9">
+                    <input fullWidth nbInput placeholder="From Date" [nbDatepicker]="fromdate" formControlName="fromDate">
+                      <nb-datepicker #fromdate [max]="max"></nb-datepicker>
+                  </div>
+
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group row">
+                  <label for="to_date" class="label col-3 col-form-label" style="text-align: center;">To Date <span class="red-class">*</span></label>
+                  <div class="col-9">
+                    <input fullWidth  nbInput placeholder="To Date" [nbDatepicker]="topicker" formControlName="toDate">
+                      <nb-datepicker #topicker [max]="max"></nb-datepicker>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <div class="form-group row">
+                  <label for="serail_no" class="label col-3 col-form-label">RDsID <span class="red-class">*</span> </label>
+                <div class="col-9">
+                  <nb-select fullWidth id="rdsId"  placeholder="-- Select RDsID --" formControlName="rdsId">
+                    <nb-option value="">Select RDsID</nb-option>
+                    <nb-option *ngFor="let model_data of modelData" value="{{ model_data.id}}">{{ model_data.rdsId }}</nb-option>
+                  </nb-select>
+                </div>
+              </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group row">
+                  <label for="status" class="label col-3 col-form-label" style="text-align: center;">Status <span class="red-class">*</span></label>
+                  <div class="col-9">
+                    <nb-select fullWidth id="Status"  placeholder="-- Select Status --" formControlName="registeredDeviceStatus">
+                      <nb-option value="">Select Status</nb-option>
+                      <nb-option *ngFor="let statusdata of statusData" value="{{ statusdata.id}}">{{ statusdata.name }}</nb-option>
+                    </nb-select>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <button type="submit" [disabled]="!form.valid" class="row1 search-button">Search</button>
+              
+            
+                <!-- <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="from_date" class="label">From Date <span class="red-class">*</span></label>
+                      <input fullWidth nbInput placeholder="From Date" [nbDatepicker]="fromdate" formControlName="fromDate">
+                      <nb-datepicker #fromdate [max]="max"></nb-datepicker>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="to_date" class="label">To Date <span class="red-class">*</span></label>
+                      <input fullWidth  nbInput placeholder="To Date" [nbDatepicker]="topicker" formControlName="toDate">
+                      <nb-datepicker #topicker [max]="max"></nb-datepicker>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="serail_no" class="label">RDsID <span class="red-class">*</span> </label>
+                      <nb-select fullWidth id="rdsId"  placeholder="-- Select RDsID --" formControlName="rdsId">
+                        <nb-option value="">Select RDsID</nb-option>
+                        <nb-option *ngFor="let model_data of modelData" value="{{ model_data.id}}">{{ model_data.rdsId }}</nb-option>
+                      </nb-select>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="status" class="label">Status <span class="red-class">*</span></label>
+                      <nb-select fullWidth id="Status"  placeholder="-- Select Status --" formControlName="registeredDeviceStatus">
+                        <nb-option value="">Select Status</nb-option>
+                        <nb-option *ngFor="let statusdata of statusData" value="{{ statusdata.id}}">{{ statusdata.name }}</nb-option>
+                      </nb-select>
+                    </div>
+                  </div>
+                </div>
+                <button type="submit" [disabled]="!form.valid" class="row1 search-button">Search</button> -->
+      
+
+          </form>  
+        
+   
+   <br/> <br/>   
+   <!-- <div class="row">
+    <div id="target" class="col-sm-12 row1" style="display: block;"> 
+      <button class="dt-button buttons-print" tabindex="0" aria-controls="DataTables_Table_0" type="button" (click)="captureScreen()"><span>Print</span></button>
+
+    </div>
+ 
+  </div> -->
+  
+    <div class="row">
+
+      <div class="col-sm-6">
+      
+  
+          <h5 >Report Name: List of devices by Date wise</h5>
+      </div>
+      <div class="col-sm-6">
+  
+          <h5 style="text-align: right;">Date of Report: {{ currentDateTime }}</h5>
+
+      </div>
+    </div>
+
+      <table *ngIf="datas && datas.length > 0" class="default-table" >
+        <tr>
+          <th>Organization Name </th>
+          <td>{{ datas[0]?.companyName }}</td>
+          <th>RDsID</th>
+          <td>{{ datas[0]?.rdsId }}</td>
+        </tr>
+        <tr>
+          <th>Modality Name</th>
+          <td>{{ datas[0]?.modalityName }}</td>
+          <th>DPID</th>
+          <td>{{ datas[0]?.dpId }}</td>
+        </tr>
+        <tr>
+          <th>Model Name</th>
+          <td>{{ datas[0]?.modelName }}</td>
+          <th>Version</th>
+          <td>{{ datas[0]?.version }}</td>
+        </tr>
+        <tr>
+          <th>UIDAI Environment Status</th>
+          <td>{{ datas[0]?.activeStatus }}</td>
+          <th>Level of complaince</th>
+          <td>{{ datas[0]?.levelOfComplaince }}</td>
+        </tr>
+        <!-- <tr class="label2">
+          <td colspan="3">
+            Organization Name: {{ items.companyName }}     
+          </td>
+          <td colspan="3">
+            RDsID: {{ items.rdsId }}     
+          </td>
+        </tr>
+        <tr class="label2">
+          <td colspan="3">
+            Modality Name: {{ items.modalityName }}     
+          </td>
+          <td colspan="3">
+            DPID: {{ items.dpId }}     
+          </td>
+        </tr>
+        <tr class="label2">
+          <td colspan="3">
+            Model Name: {{ items.modelName }}     
+          </td>
+          <td colspan="3">
+            Version: {{ items.version }}     
+          </td>
+        </tr>
+        <tr class="label2">
+          <td colspan="3">
+            UIDAI Environment Status: {{ items.activeStatus }}     
+          </td>
+          <td colspan="3">
+            Level of complaince: {{ items.levelOfComplaince }}     
+          </td>
+        </tr> -->
+      </table> 
+      <br/>
+
+      <table datatable [dtOptions]= "dtoptions" class="row-border hover" [dtTrigger]= "dtTrigger" >
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Device Code</th>  
+            <th>Device Serial No</th>    
+            <th>Device ID</th>
+            <th>OTP Verified | Date of OTP Verified</th>
+            <th>UIDAI Registered Environment</th>
+            <th>UIDAI date of registered</th>
+            <th>Data entered Date</th>
+            <th>Platform</th>
+            <th>Remarks</th>
+          </tr>
+        </thead>
+        <tbody class="center-all">
+          <tr *ngFor="let item of datas ;let i=index">
+              <td style="width: 1%">{{i+1}}</td>
+              <td>{{ item.deviceCode }}</td>
+              <td>{{ item.serialNo}}</td>
+              <td>{{ item.deviceId }}</td>
+              <td>{{ (item.otpVerified ? 'Yes':'No') + ' | ' + item.otpCreatedDt }}  </td>
+              <td>{{ item.serverEnvironmentName }}</td>
+              <td>{{ item.deviceRegisteedTimeUidai }}</td>
+              <td>{{ item.registeredDate }}</td>
+              <td>{{ item.deviceId }}</td>
+              <td>{{ item.remarks }}</td>            
+          </tr>
+        </tbody>
+      </table>
+
+     
+  </div>
+</nb-card-body>
+</nb-card>

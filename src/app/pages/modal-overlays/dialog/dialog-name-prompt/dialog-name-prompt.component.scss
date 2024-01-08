@@ -1,0 +1,37 @@
+@import '../../../../@theme/styles/themes';
+::ng-deep nb-dialog-container form{
+  padding-left: 20px;
+  padding-right: 20px;
+}
+::ng-deep nb-dialog-container form .labels{
+  font-size: 12px !important;
+  font-weight:bolder !important;
+}
+::ng-deep nb-dialog-container form .selectInput{
+  width: 400px !important;
+  font-size:12px !important;
+}
+
+::ng-deep nb-card-body {
+  overflow: hidden !important;
+}
+
+.red{
+  color: red;
+}
+
+.button-left{
+  float:right;
+  margin: 10px 0px 10px;
+ } 
+
+
+@include nb-install-component() {
+  input {
+    width: 100%;
+  }
+
+  .cancel {
+    margin-left: 1rem;
+  }
+}

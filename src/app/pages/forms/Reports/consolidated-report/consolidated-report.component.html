@@ -1,0 +1,80 @@
+<nb-card>
+    <nb-card-body>
+  <div class="heading">
+    <h2>Consolidated Report</h2>
+  </div>
+  
+  <!-- <div id="export-buttons">
+    <button >Export to XLS</button>
+    <button >Export to PDF</button>
+  </div> -->
+  <!-- <div class="">
+    <div class="buttons-row button-left">
+      Note :  <span class="dot_yellow"></span>Not Reg <span class="dot_green" ></span>Reg <span class="dot_red"></span> De-Reg
+    </div>
+    <div class="buttons-row button-right">
+      <button primary nbButton status="primary" hero  (click)="registerDevice()">Add Device Detail
+      </button>
+    </div>
+  </div> -->
+  <br/>
+  <div id="database-table">
+    <div class="row">
+      <div class="col-md-6">
+        <form class="form-inline" [formGroup]="form" (ngSubmit)="searchreport()">
+          <label for="serail_no" class="label col-sm-3 col-form-label">Serial No</label>
+
+          <nb-select fullWidth id="serailNo"  placeholder="-- Select Serail No --" formControlName="serialNo">
+            <nb-option value="">All</nb-option>
+             <nb-option *ngFor="let serialdata of serailData" value="{{ serialdata.serialNo}}">{{ serialdata.serialNo }}</nb-option>
+          </nb-select>
+
+          <!-- <label for="from_date" class="label col-sm-1 col-form-label">From Date</label>
+          <input nbInput placeholder="From Date" [nbDatepicker]="fromdate" formControlName="fromDate" >
+          <nb-datepicker #fromdate [max]="max"></nb-datepicker>
+          <label for="to_date" class="label col-sm-1 col-form-label">To Date</label>
+          <input nbInput placeholder="To Picker" [nbDatepicker]="topicker" formControlName="toDate" >
+          <nb-datepicker #topicker [max]="max"></nb-datepicker> -->
+
+          <button type="submit" nbButton status="primary">Search</button>
+        </form>
+      </div>
+    </div>    
+
+   
+    <table datatable [dtOptions]= "dtoptions" class="row-border hover" [dtTrigger]= "dtTrigger">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>DATE</th>
+          <th>Make/Model/RDsID</th>
+          <th>Device ID</th>
+          <th>Device Serial No</th>          
+          <th>Modality Name</th>
+          <th>Level Of Complaince</th>
+          <th>Env</th>
+          <th>Email</th>
+          <th>Address</th>
+          <th>Status</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of datas ;let i=index">
+            <td style="width: 1%">{{i+1}}</td>
+            <td>{{ item.registeredDate }}</td>
+            <td>{{ item.companyName+'/'+item.modelName+'/'+item.rdsId }}</td>
+            <td>{{ item.deviceId }}</td>
+            <td>{{ item.serialNo }}</td>
+            <td>{{ item.modalityName }}</td>
+            <td>{{ item.levelOfComplaince }}</td>
+            <td>{{ item.serverEnvironmentName }}</td>
+            <td>{{ item.email }}</td>
+            <td>{{ item.address }}</td>
+            <td>{{ item.activeStatus }}</td>            
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</nb-card-body>
+</nb-card>

@@ -1,0 +1,28 @@
+<nb-card class="chart-data nb-card">
+    <nb-card-header><h5 class="modal-header" [style.box-shadow]="'0px 0px 3px 2px' +box_shadow_color ">{{title |  titlecase }} <span class="count" >{{tableValue.length}}</span></h5>
+        <span style="float: right;"><button style="border-style: none;background-color: transparent; padding: 0;" (click)="close()"><i style="color: red; font-size:large  ;" class="fa fa-window-close"></i></button></span>
+    </nb-card-header>
+    <nb-card-body>
+        <div id="database-table">
+        <table datatable [dtOptions]= "dtoptions" class="row-border hover" [dtTrigger]= "dtTrigger">
+            <thead>
+                <tr>
+                    <th> s.no</th>
+                    <th>Make/Model/RDsID</th>
+                    <th>Device Serial No</th>
+                    <th>Env</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let table of tableValue; let i=index">
+                    <td>{{i+1}}</td>
+                    <td>{{table.companyName + '/' +  table.modelName+'/' +  table.rdsId}}</td>
+                    <td>{{ table.serialNo }}</td>
+                    <td>{{ table.serverEnvironmentName }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        
+    </nb-card-body>
+</nb-card>

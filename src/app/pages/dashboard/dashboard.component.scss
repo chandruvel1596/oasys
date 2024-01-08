@@ -1,0 +1,103 @@
+@import '../../@theme/styles/themes';
+@import 'bootstrap/scss/mixins/breakpoints';
+@import '@nebular/theme/styles/global/breakpoints';
+
+@include nb-install-component() {
+  .solar-card nb-card-header {
+    border: none;
+    padding-bottom: 0;
+  }
+
+  @include media-breakpoint-down(sm) {
+    ngx-traffic {
+      display: none;
+    }
+  }
+}
+
+//dashboard card animation
+.dashboard-card{
+  opacity: 0;
+  transform: translateY(20px); /* Initial translation to hide the cards */
+  animation: slideIn 0.5s ease forwards; /* Animation settings */
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px); /* Start position of the card */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); /* Final position of the card */
+  }
+}
+
+.colorgradient{
+  padding-bottom: 25px;
+  border: none;
+  width:450px;
+  height: fit-content;
+  border-radius: 10px;
+  animation-duration: 1.5s;
+  background-color:rgb(255, 255, 255,0.8);
+  box-shadow: 0 0 8px rgb(30, 144, 255);
+}
+
+.arrow-pointer {
+  width: 65px;
+  height: 40px;
+  background: rgb(157, 28, 250,0.5);
+  position:relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: -25px;
+  top:0;
+  animation:icon-width 1.5s ease 1s;
+
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: 0; width: 0; height: 0;
+    border-left: 20px solid transparent ;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    margin-left: -10px;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    right: -20px;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-left: 20px solid rgb(157, 28, 250,0.5);
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+  }
+
+  @keyframes icon-width {
+    from {
+      width:500px
+    }
+    to{
+      width:65px
+    }
+    
+  }
+
+  
+}
+
+
+
+
+
+
+
+
+
+
+

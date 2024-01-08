@@ -1,0 +1,297 @@
+<!-- <div class="container-fluid colorgradient animate__zoomInDown">
+  <p class="sub-titles">
+    <img id="profile-img" src="assets/images/RDS-01.png" class="profile-img-card center-img" style="width: 200px;" />
+  </p>
+  <form [formGroup]="registerForm" (ngSubmit)="registerSubmit()">
+    <div class="row">
+      <div class="form-group col-md-6">
+        <label class="label label-dark" for="companyName"><i class="fa fa-university"></i>&nbsp;Company Name</label>
+        <input type="text" name="companyName" class="form-control" formControlName="companyName" autocomplete="off"
+          [ngClass]="{'is-invalid':f.companyName.errors && submitted}">
+        <ng-container *ngIf="(f.companyName.invalid && f.companyName.touched)" class="invalid-feedback">
+          <p class="caption" *ngIf="f.companyName.errors?.required">
+            Company Name is required!
+          </p>
+
+        </ng-container>
+        <div style="width: 300px;"></div>
+
+      </div>
+      <div class="form-group col-md-6">
+        <label class="label label-dark" for="userName"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;User
+          Name</label>
+        <input type="text" name="userName" class="form-control" formControlName="userName"
+          [ngClass]="{'is-invalid':f.userName.errors && submitted}" autocomplete="off">
+        <ng-container *ngIf="(f. userName.invalid && f.userName.touched)" class="invalid-feedback">
+          <p class="caption" *ngIf="f.userName.errors?.required">
+            User Name is required!
+          </p>
+
+        </ng-container>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-6">
+        <label class="label label-dark" for="email"><i class="fa fa-envelope"></i>&nbsp;Email</label>
+        <input type="email" name="email" class="form-control" formControlName="email"
+          [ngClass]="{'is-invalid':f.email.errors && submitted}" autocomplete="off">
+        <ng-container *ngIf="(f. email.invalid && f.email.touched)" class="invalid-feedback">
+          <p class="caption" *ngIf="f.email.errors?.required">
+            Email is required!
+          </p>
+          <p class="caption" *ngIf="f.email.errors?.email">
+            Please enter a valid email address!
+          </p>
+
+        </ng-container>
+      </div>
+      <div class="form-group col-md-6">
+        <label class="label label-dark" for="mobile"><i class="fa-solid fa-mobile-screen-button"></i>&nbsp;Mobile</label>
+        <input type="number" name="mobile" class="form-control" formControlName="mobile"
+          [ngClass]="{'is-invalid':f.mobile.errors && submitted}" autocomplete="off">
+        <ng-container *ngIf="(f.mobile.invalid && f.mobile.touched)" class="invalid-feedback">
+          <p class="caption" *ngIf="f.mobile.errors?.required">
+            Mobile is required!
+          </p>
+          <p class="caption status-danger" *ngIf="f.mobile.dirty && f.mobile.errors?.numberLength">
+            Mobile should contain
+            10
+            characters
+          </p>
+
+        </ng-container>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-6 inner-addon right-addon">
+        <label class="label label-dark" for="Password"><i class="fa fa-key"
+            aria-hidden="true"></i>&nbsp;Password</label>
+        <div class="input-group ">
+          <input [type]="showPassword ? 'text' : 'password'" name="Password" class="form-control"
+            formControlName="password" [ngClass]="{'is-invalid':f.password.errors && submitted}"  >
+          <div>
+            <i class="label-dark fasedit fas" [ngClass]="{'fa-eye': showPassword, 'fa-eye-slash': !showPassword}"
+              (mousedown)="showPassword = !showPassword" (mouseup)="showPassword= !showPassword"></i>
+          </div>
+        </div>
+        <ng-container *ngIf="(f.password.invalid && f.password.touched)">
+          <p class="caption" *ngIf="f.password.errors?.required">
+            Password is required!
+          </p>
+          <p class="caption status-danger" *ngIf="f.password.errors?.maxlength">
+            Password should contain
+            from 8 to 15
+            characters
+          </p>
+          <p class="caption status-danger" *ngIf="f.password.errors?.pattern">
+            Password is invalid <span
+              nbTooltip="Password should contain atleast 8 characters with uppercase, lowercase, numeric and special characters. "><i
+                class="fas fa-info-circle"></i></span>
+          </p>
+
+        </ng-container>
+      </div>
+      <div class="form-group col-md-6 inner-addon right-addon">
+        <label class="label label-dark" for="repeatPassword"><i class="fa fa-key" aria-hidden="true"></i>&nbsp;Repeat
+          Password</label>
+        <div class="input-group ">
+          <input [type]="showRepeatPassword ? 'text' : 'password'" name="repeatPassword" class="form-control"
+            formControlName="repeatPassword" [ngClass]="{'is-invalid':f.repeatPassword.errors && submitted}" (paste)="preventPaste($event)">
+          <div>
+            <i class="label-dark fasedit fas"
+              [ngClass]="{'fa-eye': showRepeatPassword, 'fa-eye-slash': !showRepeatPassword}"
+              (mousedown)="showRepeatPassword = !showRepeatPassword"
+              (mouseup)="showRepeatPassword= !showRepeatPassword"></i>
+          </div>
+        </div>
+        <ng-container *ngIf="(f.repeatPassword.invalid && f.repeatPassword.touched)" class="invalid-feedback">
+          <p class="caption" *ngIf="f.repeatPassword.errors?.required">
+            Repeat Password is required!
+          </p>
+          <p class="caption" *ngIf="f.repeatPassword.errors?.confirmPassword">
+            Repeat password is mismatch <span nbTooltip="Password and Repeat Password should same!"><i
+                class="fas fa-info-circle"></i></span>
+
+
+          </p>
+
+        </ng-container>
+      </div>
+    </div>
+    <br>
+    <div class="form-group">
+      <button class="log-reg-button" type="submit">
+        REGISTER
+        <div class="log-reg-button__horizontal"></div>
+        <div class="log-reg-button__vertical"></div>
+      </button>
+    </div>
+    <div class="form-group">
+      <div *ngIf="submitted && errorMessage" class="alert alert-danger" role="alert">
+        Register failed: {{ errorMessage }}
+      </div>
+    </div>
+
+  </form>
+  <div class="separator">
+
+    <hr class="hr-text" data-content="OR">
+
+  </div>
+
+
+  <div style="margin-top: -12px;"><span>Already a user ? <a href="javascript:void(0)" (click)="login()">
+        Login</a></span></div>
+
+</div> -->
+
+
+<!-- Transfered into vendor view -->
+<form [formGroup]="registerForm" (ngSubmit)="registerSubmit()">
+  <div class="row">
+    <!-- Company Name -->
+    <div class="offset-md-1 col-md-5">
+      <div class="form-group">
+        <label class="label" for="companyName"><i class="fa fa-university"></i>&nbsp;Company Name</label>
+        <input type="text" name="companyName" class="form-control" formControlName="companyName" autocomplete="off"
+          [ngClass]="{'is-invalid':f.companyName.errors && submitted}">
+        <ng-container *ngIf="(f.companyName.invalid && f.companyName.touched)" class="invalid-feedback">
+          <p class="caption" *ngIf="f.companyName.errors?.required">
+            Company Name is required!
+          </p>
+        </ng-container>
+
+      </div>
+
+    </div>
+    <!-- User Name -->
+    <div class="col-md-5">
+      <div class="form-group">
+        <label class="label" for="userName"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;User
+          Name</label>
+        <input type="text" name="userName" class="form-control" formControlName="userName"
+          [ngClass]="{'is-invalid':f.userName.errors && submitted}" autocomplete="off">
+        <ng-container *ngIf="(f. userName.invalid && f.userName.touched)" class="invalid-feedback">
+          <p class="caption" *ngIf="f.userName.errors?.required">
+            User Name is required!
+          </p>
+        </ng-container>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <!-- Email -->
+    <div class="offset-md-1 col-md-5">
+      <div class="form-group">
+        <label class="label" for="email"><i class="fa fa-envelope"></i>&nbsp;Email</label>
+        <input type="email" name="email" class="form-control" formControlName="email"
+          [ngClass]="{'is-invalid':f.email.errors && submitted}" autocomplete="off">
+        <ng-container *ngIf="(f. email.invalid && f.email.touched)" class="invalid-feedback">
+          <p class="caption" *ngIf="f.email.errors?.required">
+            Email is required!
+          </p>
+          <p class="caption" *ngIf="f.email.errors?.email">
+            Please enter a valid email address!
+          </p>
+        </ng-container>
+     </div>
+   </div>
+    <!-- Mobile -->
+    <div class="col-md-5">
+      <div class="form-group">
+        <label class="label" for="mobile"><i class="fa-solid fa-mobile-screen-button"></i>&nbsp;Mobile</label>
+        <input type="number" name="mobile" class="form-control" formControlName="mobile"
+          [ngClass]="{'is-invalid':f.mobile.errors && submitted}" autocomplete="off">
+        <ng-container *ngIf="(f.mobile.invalid && f.mobile.touched)" class="invalid-feedback">
+          <p class="caption" *ngIf="f.mobile.errors?.required">
+            Mobile is required!
+          </p>
+          <p class="caption status-danger" *ngIf="f.mobile.dirty && f.mobile.errors?.numberLength">
+            Mobile should contain
+            10
+            characters
+          </p>
+      </ng-container>
+    </div>
+  </div>
+ </div>
+
+  <div class="row">
+    <!-- Password -->
+    <div class="offset-md-1 col-md-5">
+      <div class="form-group inner-addon right-addon">
+        <label class="label" for="Password"><i class="fa fa-key"
+          aria-hidden="true"></i>&nbsp;Password</label>
+      <div class="input-group ">
+        <input [type]="showPassword ? 'text' : 'password'" name="Password" class="form-control"
+          formControlName="password" [ngClass]="{'is-invalid':f.password.errors && submitted}"  >
+        <div>
+          <i class="label-icon fasedit fas" [ngClass]="{'fa-eye': showPassword, 'fa-eye-slash': !showPassword}"
+            (mousedown)="showPassword = !showPassword" (mouseup)="showPassword= !showPassword"></i>
+        </div>
+      </div>
+      <ng-container *ngIf="(f.password.invalid && f.password.touched)">
+        <p class="caption" *ngIf="f.password.errors?.required">
+          Password is required!
+        </p>
+        <p class="caption status-danger" *ngIf="f.password.errors?.maxlength">
+          Password should contain
+          from 8 to 15
+          characters
+        </p>
+        <p class="caption status-danger" *ngIf="f.password.errors?.pattern">
+          Password is invalid <span
+            nbTooltip="Password should contain atleast 8 characters with uppercase, lowercase, numeric and special characters. "><i
+              class="fas fa-info-circle"></i></span>
+        </p>
+     </ng-container>
+   </div>
+</div>
+<!-- Repeat password -->
+    <div class="col-md-5">
+      <div class="form-group inner-addon right-addon">
+        <label class="label " for="repeatPassword"><i class="fa fa-key" aria-hidden="true"></i>&nbsp;Repeat
+          Password</label>
+        <div class="input-group ">
+          <input [type]="showRepeatPassword ? 'text' : 'password'" name="repeatPassword" class="form-control"
+            formControlName="repeatPassword" [ngClass]="{'is-invalid':f.repeatPassword.errors && submitted}" (paste)="preventPaste($event)">
+          <div>
+            <i class="label-icon fasedit fas"
+              [ngClass]="{'fa-eye': showRepeatPassword, 'fa-eye-slash': !showRepeatPassword}"
+              (mousedown)="showRepeatPassword = !showRepeatPassword"
+              (mouseup)="showRepeatPassword= !showRepeatPassword"></i>
+          </div>
+        </div>
+        <ng-container *ngIf="(f.repeatPassword.invalid && f.repeatPassword.touched)" class="invalid-feedback">
+          <p class="caption" *ngIf="f.repeatPassword.errors?.required">
+            Repeat Password is required!
+          </p>
+          <p class="caption" *ngIf="f.repeatPassword.errors?.confirmPassword">
+            Repeat password is mismatch <span nbTooltip="Password and Repeat Password should same!"><i
+                class="fas fa-info-circle"></i></span>
+          </p>
+        </ng-container>
+      </div>
+    </div>
+
+  </div>
+<div class="row">
+  <div class="offset-md-1">
+  <div class="form-group ">
+    <button class="Reg-button" type="submit">
+      REGISTER
+    </button>
+  </div>
+  <div class="form-group">
+    <div *ngIf="submitted && errorMessage" class="alert alert-danger" role="alert">
+      Register failed: {{ errorMessage }}
+    </div>
+  </div>
+</div>
+</div>
+
+
+</form>

@@ -1,0 +1,100 @@
+<nb-card  class= "nb-card animate__fadeInBottomRight" [ngClass]="{'add': animate}">
+
+   
+  
+
+  <nb-card-body>
+     <!-- <ngx-masterbreadcrumbs></ngx-masterbreadcrumbs>  -->
+     
+  <div class="heading">
+    <h2 class="topic animate__bounceInDown">Device Details</h2>
+  </div><br>
+  
+  <!-- <div id="export-buttons">
+    <button >Export to XLS</button>
+    <button >Export to PDF</button>
+  </div> -->
+  <!-- <div class="">
+    <div class="buttons-row button-left">
+      Note :  <span class="dot_yellow"></span>Not Reg <span class="dot_green" ></span>Reg <span class="dot_red"></span> De-Reg
+    </div>
+    <div class="buttons-row button-right">
+      <button primary nbButton status="primary" hero  (click)="registerDevice()">Add Device Detail
+      </button>
+    </div>
+  </div> -->
+   
+  <div id="database-table" class="datatable">
+  <span class="note-class">Note :  
+    <span class="dot_yellow"></span> Not Registered <span class="count">{{notRegistered}}</span>&nbsp;
+    <span class="dot_green" ></span> Registered <span class="count">{{registered}}</span>&nbsp;
+    <span class="dot_red"></span> De-Registered <span class="count">{{deRegistered}}</span>
+</span>
+    <span class="right-buttons animate__heartBeat">
+    <button class="button-left " (click)="registerDevice()" >Add Device Detail
+    </button>
+    <button class="button-right" (click)="bulkdevice()">Bulk upload
+    </button>
+  </span>
+    <table datatable [dtOptions]= "dtoptions" class="row-border hover" [dtTrigger]= "dtTrigger">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Action</th>
+          <th>Make/Model/RDsID</th>
+          <th>Device ID</th>
+          <th>Registered Date/Time</th>
+          <th>Device Serial No</th>
+          <th>Env</th>
+          <th>UIDAI Status</th>
+          <th>Remarks</th>
+        </tr> 
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of datas ;let i=index">
+            <td style="width: 1%">{{i+1}}</td>
+            <td style="width: 15%">
+              <!-- <div class="btn">
+                <div class="btn-icon">
+                    <button *ngIf="item.registeredUidaiId==0" class="button-border-hide" nbTooltip="EDIT" (click)="editregisterDevice(item.id)">
+                      <img id="profile-img" src="assets/images/edit-icon.png" class="" style="width: 24px;"/>
+                    </button>
+                    <button nbTooltip="VIEW" (click)="viewregisterDevice(item.id)" class="button-border-hide">
+                      <img id="profile-img" src="assets/images/eye1.png" class="" style="width: 34px;"/>
+                    </button>
+                    <span *ngIf="item.registeredUidaiId==1" style="padding-right: 3px;"> | </span>
+                    <button *ngIf="item.registeredUidaiId==1" nbTooltip="Deactivated this device in UIDAI" (click)="clickMethod(item.serialNo)" class="button-border-hide"><img id="profile-img" src="assets/images/deactivated.png" class="" style="width: 24px;"/></button>
+
+                </div>
+              </div> -->
+              <button *ngIf="item.registeredUidaiId==0" class="button-border-hide" nbTooltip="EDIT" (click)="editregisterDevice(item.id)">
+                <img id="profile-img" src="assets/images/edit-icon.png" class="" style="width: 24px;"/>
+              </button>
+              <button nbTooltip="VIEW" (click)="viewregisterDevice(item.id)" class="button-border-hide">
+                <img id="profile-img" src="assets/images/eye1.png" class="" style="width: 34px;"/>
+              </button>
+              <span *ngIf="item.registeredUidaiId==1" class="button-border-hid"> | </span>
+              <button *ngIf="item.registeredUidaiId==1" nbTooltip="Deactivated this device in UIDAI" (click)="clickMethod(item.serialNo,item.deviceId)" class="button-border-hide"><img id="profile-img" src="assets/images/deactivated.png" class="" style="width: 24px;"/></button>
+
+          </td>
+            <td>{{ item.companyName + '/' +  item.modelName+'/' +  item.rdsId}}</td>
+            <td>{{ item.deviceId }}</td>
+            <td>{{ item.createdDate | date:'dd/MM/yy,HH:mm' }}</td>
+            <td>{{ item.serialNo }}</td>
+            <!-- <td *ngIf="item.activeStatusId==1">
+              <button success nbButton status="success" hero [size]="tiny">{{ (item.activeStatusId) ? 'Active' :'In Active' }}</button></td>
+            <td *ngIf="item.activeStatusId==0"><button success nbButton status="success" hero [size]="tiny">{{ (item.activeStatusId) ? 'Active' :'In Active' }}</button></td>
+            -->
+            <td>{{ item.serverEnvironmentName }}</td>
+            <td style="width: 4%"> 
+              <span *ngIf="item.registeredUidaiId==0" class="dot_yellow" nbTooltip="Not Registered"></span>
+              <span *ngIf="item.registeredUidaiId==1" class="dot_green" nbTooltip="Registered"></span>
+              <span *ngIf="item.registeredUidaiId==2" class="dot_red" nbTooltip="DeRegistered"></span>
+            </td>
+            <td style="max-width: 150px; word-wrap: break-word;">{{ (item.remarks) ? item.remarks:'' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</nb-card-body>
+</nb-card>

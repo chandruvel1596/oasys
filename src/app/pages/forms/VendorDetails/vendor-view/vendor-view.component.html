@@ -1,0 +1,37 @@
+<div>
+  <nb-card class="nb-card" [style.width]="cardWidth">
+    <nb-card-body>
+
+    
+            <div class="card">
+                <div class="card-header">
+                  <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item">
+                      <a class="nav-link" [ngClass]="{'active': !active}" [class.dark]="!active" href="javascript:void(0)" (click)="vendorDetails()" >Vendor Details</a>
+                    </li>
+                    <li class="nav-item" *ngIf="orgID===1">
+                      <a class="nav-link" [ngClass]="{'active': active}" [class.dark]="active" href="javascript:void(0)" (click)="vendorRegister()">Vendor Registration</a>
+                    </li>
+                    <li class="nav-item" *ngIf="orgID>1">
+                      <a class="nav-link" [ngClass]="{'active': active}" [class.dark]="active" href="javascript:void(0)" (click)="changePassord()">change password</a>
+                    </li>
+    
+                  </ul>
+    
+                </div>
+                <div class="card-body" style="margin-top: 7px;">
+                  
+
+                      <router-outlet></router-outlet>
+
+            
+              
+                    
+                </div>
+            </div>
+
+          </nb-card-body>
+        </nb-card>
+        
+
+</div>

@@ -1,0 +1,69 @@
+<form class="needs-validation" [formGroup]="myForm"> 
+  <nb-card class= "nb-card">
+    
+        <nb-card-header>Enter OTP (Contact Administrator for the OTP)</nb-card-header>
+        <!-- <nb-card-body>
+          <input #name nbInput placeholder="Name">
+        </nb-card-body> -->
+        <nb-card-body>
+          <input type="text" #name nbInput placeholder="Enter OTP" formControlName="name" (keypress)="omit_special_char($event)">
+          <br/>
+          <br/>
+          <div *ngIf="f['name'].touched && f['name'].invalid" class="alert alert-danger">
+            <div *ngIf="f['name'].errors && f['name'].errors['required']">OTP is required.</div>
+          </div>
+        </nb-card-body>
+        <nb-card-footer [nbSpinner]="loading" nbSpinnerStatus="info" nbSpinnerSize="giant">
+          <div style="margin: 0px 65px;" >
+            <button nbButton status="success" type="submit" (click)="submit(name.value)" [disabled]="!myForm.valid">Submit</button>
+            <button class="cancel" nbButton status="danger" (click)="cancel()">Cancel</button>
+
+          </div>  
+        </nb-card-footer>
+  
+  </nb-card>
+  </form>
+<!-- 
+<nb-card>
+  
+  <nb-card-header>Import Device Details</nb-card-header>
+  <form >
+  <div class="form-group row">
+    <label for="inputModel" class="label col-sm-3 col-form-label labels">Make/Model/RDsID <span class="red">*</span></label>
+    <div class="col-sm-9">
+      
+      <nb-select fullWidth id="deviceModelId"   placeholder="-- Select Make/Model/RDsID --">
+        <nb-option value="">-- Select Make/Model/RDsID --</nb-option>
+        <nb-option *ngFor="let dataModels of fetchdata" value="{{ dataModels.id}}" (change)="make_model(dataModels.mi,dataModels.id)">{{ dataModels.companyName+'/'+dataModels.name+'/'+dataModels.rdsId}}</nb-option>
+      </nb-select>
+      </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputEmail1" class="label col-sm-3 col-form-label  labels">Server Environment <span class="red">*</span></label>
+        <div class="col-sm-9">
+        <nb-select fullWidth id="serverEnvironmentId" placeholder="-- Select Server Environment --" >
+            <nb-option >-- Select Server Environment --</nb-option>
+            <nb-option *ngFor="let serverenvironments of dataServerenvironment" value="{{ serverenvironments}}" (change)="serverenvironment($event)">{{ serverenvironments.name}}</nb-option>
+             
+         </nb-select>
+         
+         </div>
+         </div>
+         <div class="form-group row">
+            <label for="formFileMultiple" class="label col-sm-3 col-form-label">Upload files <span class="red">*</span></label>
+            <div class="col-sm-9">
+            <input class="form-control" type="file" id="formFileMultiple" accept=".xls,.xlsx,.xlsm,.xlsb,.csv" (change)="getFileDetails($event)">
+          <button class="button-left" nbButton status="info" hero   (click)="upload()" [disabled]="enablebutton">Upload
+          </button>
+        </div>
+
+         </div>
+      </form>
+  <nb-card-body>
+      
+  </nb-card-body>
+  <nb-card-footer [nbSpinner]="loading" nbSpinnerStatus="info" nbSpinnerSize="giant">
+
+  </nb-card-footer>
+
+</nb-card> -->

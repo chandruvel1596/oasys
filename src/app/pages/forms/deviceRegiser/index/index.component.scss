@@ -1,0 +1,248 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+  
+  }
+
+  .heading{
+    margin-bottom: -5px;
+  }
+  
+    .count{
+      padding: 3px;
+      border-radius: 5px;
+      border: 0.6px solid rgb(0, 0, 0,0.6);
+    margin: 1px;
+      font-weight: bolder;
+      background-color: #EDE4E0;
+    
+   } 
+// animation: count-rotate 2s linear infinite;
+
+
+  
+
+  @keyframes count-rotate{
+      0%{
+         transform: rotate(0deg);
+         -webkit-transform: rotateY(0deg);
+        
+        }
+     100%{
+         transform: rotate(360deg);
+         -webkit-transform: rotateY(360deg);
+    
+        }
+     }
+
+.add{
+  animation-duration: 1.5s;
+  animation-delay: 1s;
+}
+
+  
+
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    width: 200px;
+  }
+  .right-buttons{
+    float: right;
+    animation-duration: 2s;
+    animation-delay: 2s;
+  }
+ .button-right{
+  margin-left: 8px;
+  margin-right: 3px;
+  display: inline-block;
+  padding: 7px 14px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  background-color:olivedrab;
+  border: 2px solid #000;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+ }
+ .button-right:hover{
+  background-color: #fff;
+  color: olivedrab;
+  border: 2px solid olivedrab;
+  box-shadow: 5px 5px 0px olivedrab;
+}
+.button-right:active{
+  box-shadow: none;
+  transform: translateY(4px);
+} 
+ .button-left{
+  margin: 0px 5px 10px;
+  display: inline-block;
+  padding: 7px 14px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  background-color:dodgerblue;
+  border: 2px solid black;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+ } 
+ .button-left:hover{
+  background-color: #fff;
+  color: dodgerblue;
+  border: 2px solid dodgerblue;
+  box-shadow: 5px 5px 0px dodgerblue;
+}
+.button-left:active{
+  box-shadow: none;
+  transform: translateY(4px);
+}
+ .btn button {
+  //width: 90px;
+
+  margin: 0px 3px 0px 4px;
+  border-radius: 10px;
+}
+
+.btn .btn-icon {
+  display: flex;
+  justify-content: normal;
+  align-items: center;
+  width: 120px;
+}
+.dot_green {
+  height: 12px;
+  width: 12px;
+  background-color: green;
+  border-radius: 50%;
+  display: inline-block;
+}
+.dot_yellow {
+  height: 12px;
+  width: 12px;
+  background-color: yellow;
+  border-radius: 50%;
+  display: inline-block;
+}
+.dot_red {
+  height: 12px;
+  width: 12px;
+  background-color: red;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.note-class{
+  font-size: 12px;
+  height: 20px;
+  margin: 5px;
+  
+}
+table.center-all td,th{
+  text-align :center !important;
+}
+tbody tr,td{
+  text-align :center !important;
+}
+
+.datatable{
+  overflow-x: scroll
+
+}
+
+
+
+// .topic{
+//   animation-duration: 1s;
+//   animation-delay: 1s;
+// }
+
+// .colorgradient{
+//   background-image: linear-gradient(to right,rgb(238, 130, 238 , 0.5),rgb(255, 165, 0, 0.5));
+//   padding-bottom: 10px;
+//   border: none;
+//   border-radius: 5px;
+// }
+
+@import '../../../../@theme/styles/themes';
+@include nb-install-component() {
+  button[nbTreeGridRowToggle] {
+    background: transparent;
+    border: none;
+    padding: 0;
+  }
+
+  .search-label {
+    display: block;
+  }
+  .search-input {
+    margin-bottom: 1rem;
+  }
+
+  .nb-column-name {
+    width: 100%;
+  }
+
+  ::ng-deep .row-toggle-button {
+    color: nb-theme(text-basic-color);
+  }
+
+  .nb-tree-grid-header-cell,
+  .nb-tree-grid-header-cell button {
+    text-transform: capitalize;
+  }
+
+  @media screen and (min-width: 400px) {
+    .nb-column-name,
+    .nb-column-size {
+      width: 50%;
+    }
+  }
+
+  @media screen and (min-width: 500px) {
+    .nb-column-name,
+    .nb-column-size,
+    .nb-column-kind {
+      width: 33.333%;
+    }
+  }
+
+  @media screen and (min-width: 600px) {
+    .nb-column-name {
+      width: 31%;
+    }
+    .nb-column-size,
+    .nb-column-kind,
+    .nb-column-items {
+      width: 23%;
+    }
+  }
+
+  .button-border-hide,.button-border-hide:focus-visible{
+    padding: 0;
+    border: none;
+    background: none;
+    outline: none;
+    margin:0px 4px;
+  }
+}
+
+// Hide print Date with extra title
+
+@media print {
+  @page {
+      margin-top: 0;
+      margin-bottom: 0;
+  }
+  body {
+      padding-top: 72px;
+      padding-bottom: 72px ;
+  }
+}
+
+

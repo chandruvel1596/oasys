@@ -1,0 +1,148 @@
+@import '/src/app/@theme/styles/layout';
+.red-class{
+  color:red;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+  
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    width: 200px;
+  }
+ .button-right{
+  float: right;
+   margin: 0px 0px 10px;
+ } 
+
+ .btn button {
+  //width: 90px;
+
+  margin: 0px 3px 0px 4px;
+  border-radius: 10px;
+}
+
+// .topic{
+//   animation-duration: 1s;
+//   animation-delay: 1s;
+// }
+
+.add{
+  animation-duration: 1.5s;
+  animation-delay: 1s;
+}
+
+.btn .btn-icon {
+  display: flex;
+  justify-content: normal;
+  align-items: center;
+  width: 120px;
+}
+
+
+
+table.center-all td,th{
+  text-align :center !important;
+}
+tbody tr,td{
+  text-align :center !important;
+}
+
+
+@import '../../../../@theme/styles/themes';
+@include nb-install-component() {
+  button[nbTreeGridRowToggle] {
+    background: transparent;
+    border: none;
+    padding: 0;
+  }
+
+  .search-label {
+    display: block;
+  }
+  .search-input {
+    margin-bottom: 1rem;
+  }
+
+  .nb-column-name {
+    width: 100%;
+  }
+
+  ::ng-deep .row-toggle-button {
+    color: nb-theme(text-basic-color);
+  }
+
+  .nb-tree-grid-header-cell,
+  .nb-tree-grid-header-cell button {
+    text-transform: capitalize;
+  }
+
+  @media screen and (min-width: 400px) {
+    .nb-column-name,
+    .nb-column-size {
+      width: 50%;
+    }
+  }
+
+  @media screen and (min-width: 500px) {
+    .nb-column-name,
+    .nb-column-size,
+    .nb-column-kind {
+      width: 33.333%;
+    }
+  }
+
+  @media screen and (min-width: 600px) {
+    .nb-column-name {
+      width: 31%;
+    }
+    .nb-column-size,
+    .nb-column-kind,
+    .nb-column-items {
+      width: 23%;
+    }
+  }
+
+  .button-border-hide,.button-border-hide:focus-visible{
+    padding: 0;
+    border: none;
+    background: none;
+    outline: none;
+    margin:0px 4px;
+  }
+}
+
+nb-checkbox {
+  margin-bottom: 1rem;
+}
+
+.form-inline [fullWidth] {
+  flex: 1;
+}
+
+.form-inline > * {
+  margin: 0 1.5rem 1.5rem 0;
+}
+
+nb-card.inline-form-card nb-card-body {
+  padding-bottom: 0;
+}
+
+
+// Hide print Date with extra title
+
+@media print {
+  @page {
+      margin-top: 0;
+      margin-bottom: 0;
+  }
+  body {
+      padding-top: 72px;
+      padding-bottom: 72px ;
+  }
+}

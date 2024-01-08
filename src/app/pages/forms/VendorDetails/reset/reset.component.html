@@ -1,0 +1,67 @@
+<!-- change password -->
+
+<form autocomplete="off" [formGroup]="reserForm" (ngSubmit)="resetSubmit()">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group inner-addon right-addon">
+        <label for="newPassword" class="label label-dark"><i class="fa fa-key" aria-hidden="true"></i>&nbsp;New
+          Password</label>
+        <div class="input-group ">
+        <input [type]="showPassword ? 'text' : 'password'" class="form-control" name="newPassword" formControlName="newPassword"
+          [ngClass]="{'is-invalid':f.newPassword.errors && submitted}">
+          <div *ngIf="f.newPassword.value!==''">
+            <i class="label-dark fasedit fas" [ngClass]="{'fa-eye': showPassword, 'fa-eye-slash': !showPassword}"
+              (mousedown)="showPassword = !showPassword" (mouseup)="showPassword= !showPassword"></i>
+          </div>
+        </div>
+        <ng-container *ngIf="(f.newPassword.invalid && f.newPassword.touched)" class="invalid-feedback">
+          <p class="caption" *ngIf="f.newPassword.errors?.required">
+            New Password is required!
+          </p>
+          <p class="caption status-danger" *ngIf="f.newPassword.errors?.maxlength">
+            Password should contain
+            from 8 to 15
+            characters
+          </p>
+          <p class="caption status-danger" *ngIf="f.newPassword.errors?.pattern">
+            Password is invalid <span
+              nbTooltip="Password should contain atleast 8 characters with uppercase, lowercase, numeric and special characters. "><i
+                class="fas fa-info-circle"></i></span>
+          </p>
+        </ng-container>
+      </div>
+
+      <div class="form-group">
+        <label for="confirmPassword" class="label label-dark"><i class="fa-solid"
+            [ngClass]="{'fa-unlock': f.confirmPassword.invalid,'fa-lock': f.confirmPassword.valid }"
+            aria-hidden="true"></i>&nbsp;Confirm
+          Password</label>
+        <div class="input-group inner-addon right-addon">  
+        <input [type]="showRepeatPassword ? 'text' : 'password'" class="form-control" name="confirmPassword" formControlName="confirmPassword"
+          [ngClass]="{'is-invalid':f.confirmPassword.errors && submitted}">
+          <div *ngIf="f.confirmPassword.value!==''">
+            <i class="label-dark fasedit fas" [ngClass]="{'fa-eye': showRepeatPassword, 'fa-eye-slash': !showRepeatPassword}"
+              (mousedown)="showRepeatPassword = !showRepeatPassword" (mouseup)="showRepeatPassword= !showRepeatPassword"></i>
+          </div>
+        </div>  
+        <ng-container *ngIf="(f.confirmPassword.invalid && f.confirmPassword.touched)" class="invalid-feedback">
+          <p class="caption" *ngIf="f.confirmPassword.errors?.required">
+            Confirm Password is required!
+          </p>
+          <p class="caption" *ngIf="f.confirmPassword.errors?.confirmPassword">
+            Repeat password is mismatch <span nbTooltip="New Password and confirm Password should same!"><i
+                class="fas fa-info-circle"></i></span>
+          </p>
+        </ng-container>
+      </div>
+
+      <div class="form-group ">
+        <button class="Reg-button" type="submit">
+          Change
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+</form>

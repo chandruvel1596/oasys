@@ -1,0 +1,134 @@
+
+  
+  
+
+  <div class="container-fluid colorgradient animate__zoomInDown ">
+    
+      <!-- <h1 id="title" class="title">Login</h1> -->
+      <p class="sub-titles">
+        <img id="profile-img" src="assets/images/RDS-01.png" class="profile-img-card center-img"
+          style="width: 200px;" />
+      </p>
+
+      <div class="">
+
+        <!-- <form autocomplete="off" *ngIf="!isLoggedIn" name="form" (ngSubmit)="oncheck()" #f="ngForm" -->
+        <form autocomplete="off" *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm"
+          novalidate>
+          <div class="form-group">
+
+
+            <label for="username" class="label label-dark"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;User
+              Name</label>
+            <input type="text" class="form-control" name="userName" [(ngModel)]="form.userName" required
+              #userName="ngModel" autocomplete="off" id="userName"
+              [ngClass]="{ 'is-invalid': f.submitted && userName.errors }" [readonly]="isReadOnly" />
+            <!--<div *ngIf="username.errors && f.submitted" class="invalid-feedback">
+            Username is required!
+          </div>-->
+
+            <ng-container *ngIf="(userName.invalid && userName.touched)" class="invalid-feedback">
+              <p class="caption" *ngIf="userName.errors?.required">
+                User Name is required!
+              </p>
+
+            </ng-container>
+
+          </div>
+          <div class="form-group inner-addon right-addon">
+            
+
+            <label for="password" class="label label-dark"><i class="fa fa-key" aria-hidden="true"></i>&nbsp;Password</label>
+            <div class="input-group ">
+            <input [type]="showPassword ? 'text' : 'password'" class="form-control pwd-control" name="password" id="password" [(ngModel)]="form.password"
+              required minlength="4" maxlength="15" autocomplete="off" #password="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && password.errors }" [readonly]="isReadOnly" />
+              <div *ngIf="form.password">
+                <i class="label-dark fas" [ngClass]="{'fa-eye': showPassword, 'fa-eye-slash': !showPassword}" (mousedown)="showPassword = !showPassword" 
+                (mouseup)="showPassword= !showPassword"></i>
+              </div>
+
+            </div>
+            <!--<div *ngIf="password.errors && f.submitted" class="invalid-feedback">
+            <div *ngIf="password.errors['required']">Password is required</div>
+            <div *ngIf="password.errors['minlength']">
+              Password must be at least 6 characters
+            </div>
+          </div>-->
+            <ng-container *ngIf="(password.invalid && password.touched) ">
+              <p class="caption status-danger" *ngIf="password.errors['required']">
+                Password is required!
+              </p>
+              <p class="caption status-danger" *ngIf="(password.errors['minlength'] || password.errors['maxlength'])">
+                Password should contain
+                from 4 to 15
+                characters
+              </p>
+            </ng-container>
+            
+
+          </div><br>
+          <div class="form-group">
+            <button type="submit" class="log-reg-button" [ngClass]="{ 'button-active': isButtonActive }">
+              LOGIN
+              <div class="log-reg-button__horizontal"></div>
+              <div class="log-reg-button__vertical"></div>
+            </button>
+            <!-- <button class="button">
+              Login
+            </button> -->
+          </div>
+          <div class="form-group">
+            <div *ngIf="f.submitted && isLoginFailed" class="alert alert-danger" role="alert">
+              Login failed: {{ errorMessage }}
+            </div>
+          </div>
+        </form>
+        <!-- spinnner element is 
+        defined with id loading -->
+        <div class="d-flex justify-content-center" *ngIf="isLoggedIn">
+          <div class="spinner-border" role="status">
+            <span class="sr-only" id="loading"></span>
+          </div>
+        </div>
+
+        <!-- <div class="alert alert_success" *ngIf="isLoggedIn" [nbSpinner]="true" nbSpinnerStatus="success">
+              
+      </div> -->
+      </div>
+
+      <!-- <div class="separator">
+
+        <hr class="hr-text" data-content="OR">
+
+      </div>
+     
+
+      <div><span>New user ? <a  href="javascript:void(0)" (click)="register()" > Register</a></span></div> -->
+
+    
+  </div>
+
+  
+
+
+
+
+ 
+
+
+
+
+<!-- <nb-layout-footer class="custom-footer">
+  <div class="container-fluid foot">
+    <div class="full-width-footer">
+      <span class="label">
+        Copyrights © {{year}} <b>OASYS</b> Cybernetics Pvt Ltd. All rights reserved.
+      </span>
+      <span style="color:white;">
+        <a href="https://oasys.co/privacy-policy.html" target="_blank">Privacy Policy |</a>
+        <a href="https://oasys.co/terms.html" target="_blank">Terms & Condition</a>
+      </span>
+    </div>
+  </div>
+</nb-layout-footer> -->

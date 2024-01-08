@@ -1,0 +1,356 @@
+@mixin ngx-layout() {
+  @include media-breakpoint-down(is) {
+    .row {
+      margin-left: -10px;
+      margin-right: -10px;
+    }
+  }
+}
+
+//  $mycolor:linear-gradient(rgb(238, 130, 238 , 0.5),rgb(255, 165, 0, 0.5));
+// $mycolor:linear-gradient(rgb(83, 127, 231),lightgrey);
+$mycolor:linear-gradient(rgb(230, 153, 230),rgb(235, 199, 132));
+
+
+
+.center-img{
+  display: block;
+margin-left: auto;
+margin-right: auto;
+width: 20%;
+}
+
+.label-dark{
+color:rgb(97, 96, 96);
+}
+
+.log-reg-button {
+	
+	--offset: 10px;
+	--border-size: 2px;
+	
+	display: block;
+	position: relative;
+	padding: 0.5em 1em;
+	appearance: none;
+	border: 0;
+	background-image: linear-gradient(rgb(127, 49, 255,0.5),rgb(238, 130, 238,0.5));
+	color:#7F31FF;
+	text-transform: uppercase;
+	letter-spacing: .25em;
+	outline: none;
+	cursor: pointer;
+	font-weight: bold;
+	border-radius: 0;
+	box-shadow: inset 0 0 0 var(--border-size) currentcolor;
+	transition: background .8s ease;
+  transition: transform 0.3s;
+  
+	
+	&:hover {
+		background: rgba(100, 0, 0, .03);
+	}
+
+  &:active{
+    transform: scale(0.90);
+    background-image: linear-gradient(to right,rgb(127, 49, 255,0.5),rgb(238, 130, 238,0.5));
+  }
+	
+	&__horizontal,
+	&__vertical {
+		position: absolute;
+		top: var(--horizontal-offset, 0);
+		right: var(--vertical-offset, 0);
+		bottom: var(--horizontal-offset, 0);
+		left: var(--vertical-offset, 0);
+		transition: transform .8s ease;
+		will-change: transform;
+		
+		&::before {
+			content: '';
+			position: absolute;
+			border: inherit;
+		}
+	}
+	
+	&__horizontal {
+		--vertical-offset: calc(var(--offset) * -1);
+		border-top: var(--border-size) solid currentcolor;
+		border-bottom: var(--border-size) solid currentcolor;
+		
+		&::before {
+			top: calc(var(--vertical-offset) - var(--border-size));
+			bottom: calc(var(--vertical-offset) - var(--border-size));
+			left: calc(var(--vertical-offset) * -1);
+			right: calc(var(--vertical-offset) * -1);
+		}
+	}
+	
+	&:hover &__horizontal {
+		transform: scaleX(0);
+	}
+	
+	&__vertical {
+		--horizontal-offset: calc(var(--offset) * -1);
+		border-left: var(--border-size) solid currentcolor;
+		border-right: var(--border-size) solid currentcolor;
+		
+		&::before {
+			top: calc(var(--horizontal-offset) * -1);
+			bottom: calc(var(--horizontal-offset) * -1);
+			left: calc(var(--horizontal-offset) - var(--border-size));
+			right: calc(var(--horizontal-offset) - var(--border-size));
+		}
+	}
+	
+	&:hover &__vertical {
+		transform: scaleY(0);
+	}
+	
+}
+
+.hr-text {
+  line-height: 1em;
+  position: relative;
+  outline: 0;
+  border: 0;
+  color: black;
+  text-align: center;
+  height: 1.5em;
+  opacity: .5;
+  &:before {
+    content: '';
+    // use the linear-gradient for the fading effect
+    // use a solid background color for a solid bar
+    background: linear-gradient(to right, transparent, #818078, transparent);
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 1px;
+  }
+  &:after {
+    content: attr(data-content);
+    position: relative;
+    display: inline-block;
+    color: black;
+
+    padding: 0 .5em;
+    line-height: 1.5em;
+    // this is really the only tricky part, you need to specify the background color of the container element...
+    color: #818078;
+    background-color: #fcfcfa;
+  }
+}
+
+// search button in reports
+.search-button{
+	border-radius: 12px;
+	background-color: #3366ff;
+	color: white;
+	padding: 8px 12px 8px 12px;
+	text-transform: uppercase;
+	border: none;
+	outline: 2px solid #3366ff;
+	outline-offset: 3px;
+	font-size: smaller;
+	margin: 4px;
+	font-weight: bolder;
+	letter-spacing: 1px;
+	text-align: center;
+	transition: outline-offset 0.3s linear,
+				background-color 0.3s linear,
+				outline 0.3s linear
+  }
+  
+  .search-button:hover{
+	outline-offset: 2px;
+	background-color: rgb(51, 102, 255,0.8);
+	outline: 2px solid rgb(51, 102, 255,0.8);
+  
+  }
+
+  .search-button:disabled {
+	background-color:rgba(143, 155, 179, 0.24); /* Change to a disabled color */
+	color: rgba(143, 155, 179, 0.48);
+	outline: 2px solid rgba(143, 155, 179, 0.24); /* Change to a disabled color */ /* Change the cursor to indicate it's not clickable */
+	/* Add any other styling for the disabled state */
+  }
+
+  // Register button & change password button
+
+.Reg-button {
+	position: relative;
+	padding: 10px 22px;
+	border-radius: 6px;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	background-color: #7d2ae8;
+	transition: all 0.2s ease;
+  }
+  
+  .Reg-button:active {
+	transform: scale(0.96);
+  }
+  
+  .Reg-button:before,
+  .Reg-button:after {
+	position: absolute;
+	content: "";
+	width: 150%;
+	left: 50%;
+	height: 100%;
+	transform: translateX(-50%);
+	z-index: -1000;
+	background-repeat: no-repeat;
+  }
+  
+  .Reg-button:active:before {
+	top: -70%;
+	background-image: radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+	  radial-gradient(circle, transparent 20%, #7d2ae8 20%, transparent 30%),
+	  radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+	  radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+	  radial-gradient(circle, transparent 10%, #7d2ae8 15%, transparent 20%),
+	  radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+	  radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+	  radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+	  radial-gradient(circle, #7d2ae8 20%, transparent 20%);
+	background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%,
+	  10% 10%, 18% 18%;
+	background-position: 50% 120%;
+	animation: greentopBubbles 0.6s ease;
+  }
+  
+  @keyframes greentopBubbles {
+	0% {
+	  background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%,
+		40% 90%, 55% 90%, 70% 90%;
+	}
+  
+	50% {
+	  background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%,
+		50% 50%, 65% 20%, 90% 30%;
+	}
+  
+	100% {
+	  background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%,
+		50% 40%, 65% 10%, 90% 20%;
+	  background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+	}
+  }
+  
+  .Reg-button:active::after {
+	bottom: -70%;
+	background-image: radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+	  radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+	  radial-gradient(circle, transparent 10%, #7d2ae8 15%, transparent 20%),
+	  radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+	  radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+	  radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+	  radial-gradient(circle, #7d2ae8 20%, transparent 20%);
+	background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 20% 20%, 18% 18%;
+	background-position: 50% 0%;
+	animation: greenbottomBubbles 0.6s ease;
+  }
+  
+  @keyframes greenbottomBubbles {
+	0% {
+	  background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%,
+		70% -10%, 70% 0%;
+	}
+  
+	50% {
+	  background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%,
+		105% 0%;
+	}
+  
+	100% {
+	  background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%,
+		110% 10%;
+	  background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+	}
+  }
+  
+
+
+// .button {
+//   all: unset;
+//   width: 88%;
+//   height: 20px;
+//   font-size: 16px;
+//   font-weight: bold;
+//   background: transparent;
+//   border: none;
+//   position: relative;
+//   color: #f0f0f0;
+//   cursor: pointer;
+//   z-index: 1;
+//   padding: 10px 20px;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   white-space: nowrap;
+//   user-select: none;
+//   -webkit-user-select: none;
+//   touch-action: manipulation;
+//   transition: 0.3s ease-in-out;
+//   margin-left: 2px;
+// }
+
+// .button:hover {
+//   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+// }
+
+// .button::after,
+// .button::before {
+//   content: '';
+//   position: absolute;
+//   bottom: 0;
+//   right: 0;
+//   z-index: -99999;
+//   transition: all .4s;
+// }
+
+// .button::before {
+//   transform: translate(0%, 0%);
+//   width: 100%;
+//   height: 100%;
+//   background-color: #4158D0;
+//   background-image: linear-gradient(43deg, #7383d3 15%, #C850C0 100%, #ffcc70 100%);
+//   border-radius: 10px;
+// }
+
+// .button::after {
+//   transform: translate(10px, 10px);
+//   width: 35px;
+//   height: 35px;
+//   background: #6804da2f;
+//   backdrop-filter: blur(5px);
+//   -webkit-backdrop-filter: blur(5px);
+//   border-radius: 50px;
+// }
+
+// .button:hover::before {
+//   transform: translate(5%, 20%);
+//   width: 110%;
+//   height: 110%;
+// }
+
+// .button:hover::after {
+//   border-radius: 10px;
+//   transform: translate(0, 0);
+//   width: 100%;
+//   height: 100%;
+// }
+
+// .button:active::after {
+//   transition: 0s;
+//   transform: translate(0, 5%);
+// }
+
+
+
+
+

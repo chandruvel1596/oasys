@@ -1,0 +1,75 @@
+// .breadcrumb-holder {
+//     margin: 0 0 5px;
+//     padding: 0 0 5px;
+//   }
+  
+//   .breadcrumb-holder ul {
+//     display: flex;
+//     list-style-type: none;
+//     padding-left: 0;
+//   }
+  
+  
+//   .breadcrumb-holder li a, .breadcrumb-holder li a:link, .breadcrumb-holder li a:visited {
+//     text-decoration: none;
+//     display: block;
+//   }
+  
+  
+//   /* Angled breadcrumb design */
+  
+//   .angled-breadcrumbs li a, .angled-breadcrumbs li a:link, .angled-breadcrumbs li a:visited {
+//     padding: 5px 5px 5px 20px;
+//     color: white;
+//     background: #698f87;
+//     position: relative;
+//     text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
+//   }
+  
+  
+  
+//   .angled-breadcrumbs li a:before, .angled-breadcrumbs li a:after {
+//     content: "";
+//     position: absolute;
+//     z-index: 2;
+//     top: 50%;
+//     transform: translate(0, -50%);
+//     right: -12px;
+//     border: 16px solid transparent;
+//     border-right: none;
+//     border-left: 13px solid #698f87;
+//   }
+  
+//   .angled-breadcrumbs li a:before {
+//     right: -13px;
+//     border-left: 13px solid white;
+//   }
+  
+//   .angled-breadcrumbs li a:hover{
+//     background: #2f8e7a;
+//   }
+  
+//   .angled-breadcrumbs li a:hover:after {
+//    border-left: 13px solid #2f8e7a; 
+//   }
+
+//   .active{
+//     color: red;
+//   }
+  
+  
+.breadcumb-container{
+  padding: 5px;
+  font-size: 14px;
+  font-weight: 505;
+}
+
+.fa-house{
+  color: lightgrey !important;
+}
+
+.separator::after{
+  content: ' / ';
+  
+
+}

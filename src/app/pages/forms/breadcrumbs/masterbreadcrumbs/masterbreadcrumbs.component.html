@@ -1,0 +1,35 @@
+<!-- <div class="breadcrumb-holder">
+    <ul class="angled-breadcrumbs">
+      <li><a href="javascript:void(0);">Vendor details</a></li>
+      <li><a routerLink="/pages/forms/vendorDetailList">Vendor details</a></li>
+      <li><a routerLink="/pages/forms/modelDetailList">Model details</a></li>
+      <li><a routerLink="/pages/forms/deviceregisterList">Device details</a></li>
+    </ul>
+  </div> -->
+<div class="breadcumb-container">
+  <ng-container *ngIf="breadcrumbs.length > 0" >
+    <ng-container *ngFor="let breadcrumb of breadcrumbs; let last = last">
+      <ng-container *ngIf="!last" >
+
+        <span class="separator" [innerHTML]="breadcrumb.label"></span> 
+
+      </ng-container> 
+      <ng-container *ngIf="last">
+        <span [innerHTML]="breadcrumb.label" style="opacity: 0.8;"></span> 
+      </ng-container>
+    </ng-container>
+  </ng-container>
+</div>
+
+  <!-- <a href="javascript:void(0)" *ngSwitchCase="'/pages'">Home></a>
+  <a href="javascript:void(0)" *ngSwitchCase="'/pages/Dashboard'">Home></a>
+  <a href="javascript:void(0)" *ngSwitchCase="'/pages/forms'">Master></a>
+  <a href="javascript:void(0)" *ngSwitchCase="'/pages/forms/deviceregisterList'">Master></a>
+  <a href="javascript:void(0)" *ngSwitchCase="'/pages/forms/vendorDetailList'">Master></a>
+  <a href="javascript:void(0)" *ngSwitchCase="'/pages/forms/modelDetailList'">Master></a>
+  <a href="javascript:void(0)" *ngSwitchCase="'/pages/forms/registeredDeviceReport'">Reports></a>
+  <a href="javascript:void(0)" *ngSwitchCase="'/pages/forms/deRegisteredDeviceReport'">Reports></a>
+  <a href="javascript:void(0)" *ngSwitchCase="'/pages/forms/keyRotationReport'">Reports></a>
+  <a href="javascript:void(0)" *ngSwitchCase="'/pages/forms/datewiseReport'">Reports></a> -->
+
+  

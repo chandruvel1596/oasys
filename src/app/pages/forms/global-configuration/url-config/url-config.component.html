@@ -1,0 +1,64 @@
+<form [formGroup]="form" (ngSubmit)="submitDetails()">
+    <div class="form-group row">
+        <label class="label col-sm-3" for="url"> URL <span class="red">*</span></label>
+        <div class="col-sm-9">
+        <input class="form-control" placeholder="Enter the url" name="url" formControlName="url">
+        <br>
+        <div *ngIf="f['url'].touched && f['url'].invalid" class="alert alert-danger">
+          <div *ngIf="f['url'].errors && f['url'].errors['required']">Url is
+            required.</div>
+        </div>
+    </div>
+    </div>
+    
+    <div class="form-group row">
+        <label class="col-sm-3 label" for="activeStatus">Device Status <span class="red">*</span></label>
+        <div class="col-sm-9">
+          <nb-radio-group formControlName="activeStatus" name='activeStatus' class="radio-group">
+            <nb-radio *ngFor="let dataStatuss of dataStatus" value="{{ dataStatuss.id}}" disabled>{{
+              dataStatuss.name}}</nb-radio>
+            <!-- <nb-radio disabled value="0">In Active</nb-radio> -->
+          </nb-radio-group>
+        </div>
+      </div>   
+      <div class="form-group row">
+        <label for="inputEmail1" class="label col-sm-3 col-form-label">Server Environment <span
+            class="red">*</span></label>
+        <div class="col-sm-9">
+          <nb-select fullWidth id="serverEnvironmentId" formControlName="environmentServerId"
+            placeholder="-- Select Server Environment --">
+            <nb-option value="" disabled selected>-- Select Server Environment --</nb-option>
+            <nb-option *ngFor="let serverenvironments of dataServerenvironment"
+              value="{{ serverenvironments.id}}">{{ serverenvironments.name}}</nb-option>
+          </nb-select>
+          <br><br>
+          <div *ngIf="f['environmentServerId'].touched && f['environmentServerId'].invalid"
+    class="alert alert-danger">
+    <div *ngIf="f['environmentServerId'].errors && f['environmentServerId'].errors['required']">Server
+      Environment is required.</div>
+  </div>
+          <!-- <br /><br />
+          <div *ngIf="f['serverEnvironmentId'].touched && f['serverEnvironmentId'].invalid"
+            class="alert alert-danger">
+            <div *ngIf="f['serverEnvironmentId'].errors && f['serverEnvironmentId'].errors['required']">Server
+              Environment is required.</div>
+          </div> -->
+        </div>
+      </div> 
+      <div class="form-group row">
+        <label class="col-sm-3 label" for="category">Category <span class="red">*</span></label>
+        <div class="col-sm-9">
+          <nb-radio-group formControlName="urlCategory" name='category' class="radio-group">
+            <nb-radio  value="1"> Register</nb-radio>
+            <nb-radio  value="2"> Deregister</nb-radio>
+            <!-- <nb-radio disabled value="0">In Active</nb-radio> -->
+          </nb-radio-group>
+        </div>
+      </div> 
+      <div class="form-group row">
+        <div class="offset-sm-3 col-sm-9">
+            <button type="submit" nbButton status="primary" style="margin-right: 10px;" [disabled]="(!form.valid)"> Save</button>
+            <button type="reset" nbButton status="danger" [disabled]="form.pristine" (click)="resetform()"> Reset </button>
+        </div>
+    </div>
+</form>

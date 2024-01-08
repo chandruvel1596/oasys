@@ -1,0 +1,41 @@
+@import '/src/app/@theme/styles/layout';
+.caption{
+    color: red;
+    margin-bottom: 1px;
+    margin-top: 1px;
+  }
+
+ input{
+    border: none;
+    background-color: rgba(0, 0, 0, 0.04);
+    border-bottom: 1.8px solid rgb(167, 53, 249);
+//     border: 1.8px solid transparent; /* Set a transparent solid border */
+//     background-color: rgba(0, 0, 0, 0.04);
+//     border-radius: 1px;
+//   border-image: linear-gradient(to right, #a02087, #989696,#C85C8E); /* Define your gradient colors */
+//   border-image-slice: 1; /* Specify the border image slice */
+//   padding: 8px; /* Adjust padding as needed */
+ } 
+
+ input:focus{
+    background-color: rgba(0, 0, 0, 0.05);
+ }
+
+ .inner-addon { 
+   position: relative; 
+ }
+
+ .inner-addon .fasedit {
+   position: absolute;
+   padding: 10px 30px;
+   z-index: 100;
+   cursor: pointer;
+   }
+   
+   .right-addon .fasedit { right: 0px; }
+   
+   .right-addon input { 
+   padding-right: 20px; 
+   border-top-right-radius: 4px !important;
+   border-bottom-right-radius: 4px !important;
+   }

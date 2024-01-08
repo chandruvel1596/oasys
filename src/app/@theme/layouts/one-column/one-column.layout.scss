@@ -1,0 +1,69 @@
+@import '../../styles/themes';
+@import 'bootstrap/scss/mixins/breakpoints';
+@import '@nebular/theme/styles/global/breakpoints';
+@import '/src/app/@theme/styles/layout';
+
+@include nb-install-component() {
+  .menu-sidebar ::ng-deep .scrollable {
+    padding-top: nb-theme(layout-padding-top);
+  }
+}
+
+.fott {
+  position:fixed;
+}
+
+::ng-deep nb-sidebar-footer .menu-group span {
+  //margin-left: 50px;
+  //margin-top: -18px;
+  margin: 0px 60px;
+}
+
+nb-layout-header{
+   background-color: rgb(167, 53, 249);
+   
+//  background-image:linear-gradient(to right,dodgerblue,darkgrey);
+}
+
+nb-sidebar{
+  // background-image: linear-gradient(to bottom,rgb(216, 180, 248,0.7),rgb(135, 203, 185,0.3))
+  
+}
+
+nb-layout-column{
+  padding-top: 4px !important;
+
+
+}
+
+::ng-deep nb-card-body{
+
+}
+
+// animate for header
+.animate-header{
+
+  animation: animate-header 1s ease-in-out 0.2s forwards;
+
+}
+
+@keyframes animate-header {
+  0% {
+    transform: scaleY(2); /* Start with double the height */
+    opacity: 0; /* Optional: Add opacity for a fade effect */
+  }
+  100% {
+    transform: scaleY(1); /* Return to original height */
+    opacity: 1; /* Show the element */
+  }
+}
+
+
+
+
+
+
+
+
+
+

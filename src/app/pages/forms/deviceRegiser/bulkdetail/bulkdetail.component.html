@@ -1,0 +1,107 @@
+<div class="row animate__fadeInBottomRight add">
+  <div class="col-md-10">
+    <nb-card class= "nb-card">
+      <nb-card-header><h6>Add BulkDevice Detail</h6></nb-card-header>
+      <nb-card-body>
+        <form [formGroup]="form" (ngSubmit)="submitDetails()">
+          <div class="form-group row">
+            <label for="inputEmail1" class="label col-sm-3 col-form-label">Make/Model/RDsID <span
+                class="red">*</span></label>
+            <div class="col-sm-9">
+              <nb-select fullWidth id="deviceModelId" formControlName="deviceModelId"
+                placeholder="-- Select Make/Model/RDsID --">
+                <nb-option value="">-- Select Make/Model/RDsID --</nb-option>
+                <nb-option *ngFor="let dataModels of dataModel" value="{{ dataModels.id}}">{{
+                  dataModels.companyName+'/'+dataModels.name+'/'+dataModels.rdsId}}</nb-option>
+              </nb-select>
+              <br /><br />
+              <div *ngIf="f['deviceModelId'].touched && f['deviceModelId'].invalid" class="alert alert-danger">
+                <div *ngIf="f['deviceModelId'].errors && f['deviceModelId'].errors['required']">Make/Model/RDsID is
+                  required.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label class="col-sm-3 label">Device Status <span class="red">*</span></label>
+            <div class="col-sm-9">
+              <nb-radio-group formControlName="activeStatus" name='activeStatus' class="radio-group">
+                <nb-radio *ngFor="let dataStatuss of dataStatus" value="{{ dataStatuss.id}}" disabled>{{
+                  dataStatuss.name}}</nb-radio>
+                <!-- <nb-radio disabled value="0">In Active</nb-radio> -->
+              </nb-radio-group>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputEmail1" class="label col-sm-3 col-form-label">Server Environment <span
+                class="red">*</span></label>
+            <div class="col-sm-9">
+              <nb-select fullWidth id="serverEnvironmentId" formControlName="serverEnvironmentId"
+                placeholder="-- Select Server Environment --">
+                <nb-option value="">-- Select Server Environment --</nb-option>
+                <nb-option *ngFor="let serverenvironments of dataServerenvironment"
+                  value="{{ serverenvironments.id}}">{{ serverenvironments.name}}</nb-option>
+              </nb-select>
+              <br /><br />
+              <div *ngIf="f['serverEnvironmentId'].touched && f['serverEnvironmentId'].invalid"
+                class="alert alert-danger">
+                <div *ngIf="f['serverEnvironmentId'].errors && f['serverEnvironmentId'].errors['required']">Server
+                  Environment is required.</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3 label">Remarks</label>
+            <div class="col-sm-9">
+              <textarea rows="2" nbInput fullWidth shape="round" (keypress)="omit_special_char2($event)"
+                placeholder="Remarks (maximum 50 characters)" formControlName="remarks" name='remarks ' maxlength="50"></textarea>
+              <div *ngIf="f['remarks'].touched && f['remarks'].invalid" class="alert alert-danger">
+                <div *ngIf="f['remarks'].errors['maxlength']">
+                  Remarks can be max 50 characters long.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3 label">Date/Time<span class="red"></span></label>
+            <div class="col-sm-9">
+              <p class="col-sm-6">{{currentDateTime}}</p>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="formFileMultiple" class="label col-sm-3 col-form-label">Upload files <span
+                class="red">*</span>&nbsp;&nbsp;
+              <button class="Samplefile" type="button" (click)="downloadsamplefile()">Sample file</button>
+              <p class="file-format"> (.xls,.xlsx,.xlsm,.xlsb formats allowed) </p>
+              
+            </label>
+
+            <div class="col-sm-9">
+              <input class="form-control" type="file" #myInput id="formFileMultiple"
+                accept=".xls,.xlsx,.xlsm,.xlsb,.csv" (change)="getFileDetails($event)">
+              <p class="invalid" *ngIf="invalidtype">please upload excel file</p>
+            </div>
+
+
+          </div>
+
+
+          <div class="form-group row">
+            <div class="offset-sm-3 col-sm-9">
+              <button type="submit" nbButton status="primary" [disabled]="(form.invalid || fileuploaded )"
+                style="margin-right: 10px;">Add</button>
+              <button type="cancel" nbButton status="danger" (click)="cancel()">Cancel</button>
+              <!-- <button type="button" nbButton status="default" status="danger" (click)="showToast('success','Device Registered successfully');">show</button> -->
+            </div>
+          </div>
+        </form>
+        <div *ngIf="failuredata" class="failurelink"><span class="failureDataLink" >Click to download the status of uploaded device details <button
+            (click)="failureDetails()" [ngClass]="{'responseLink':!swap,'aftervisited': swap}">{{!swap? 'Download' : 'Downloaded'}}</button> </span></div>
+      </nb-card-body>
+    </nb-card>
+
+  </div>
+
+
+</div>
+

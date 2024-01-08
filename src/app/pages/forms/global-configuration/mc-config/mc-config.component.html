@@ -1,0 +1,84 @@
+<form [formGroup]="Mcform" (ngSubmit)="McSubmit()" >
+    <div class="form-group row">
+      <label class="col-sm-3 label" for="Modality">Modality <span class="red">*</span></label>
+      <div class="col-sm-9">
+        <nb-radio-group formControlName="modality" name='modality' class="radio-group">
+          <nb-radio  value="L0">L0</nb-radio>
+          <nb-radio  value="L1" >L1</nb-radio>
+          <!-- <nb-radio disabled value="0">In Active</nb-radio> -->
+        </nb-radio-group>
+      </div>
+    </div>
+
+    
+    <div class="form-group row">
+      <label class="col-sm-3 label" for="activeStatus">Device Status <span class="red">*</span></label>
+      <div class="col-sm-9">
+        <nb-radio-group formControlName="activeStatus" name='activeStatus' class="radio-group">
+          <nb-radio *ngFor="let dataStatuss of dataStatus" value="{{ dataStatuss.id}}" disabled>{{
+            dataStatuss.name}}</nb-radio>
+          <!-- <nb-radio disabled value="0">In Active</nb-radio> -->
+        </nb-radio-group>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="label col-sm-3" for="noOfDays"> No of days <span class="red">*</span></label>
+      <div class="col-sm-9">
+      <input class="form-control" type="number" name="noOfDays" formControlName="noOfDays">
+      <br>
+            <div *ngIf="m['noOfDays'].touched && m['noOfDays'].invalid" class="alert alert-danger">
+              <div *ngIf="m['noOfDays'].errors && m['noOfDays'].errors['required']">No of days is
+                required.</div>
+            <div *ngIf=" m['noOfDays'].errors['max']">For {{m.modality.value}} No of days should not more than
+                  {{maxDays}}.</div>
+            </div>
+            
+  </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputEmail1" class="label col-sm-3 col-form-label">Server Environment <span
+          class="red">*</span></label>
+      <div class="col-sm-9">
+        <nb-select fullWidth id="serverEnvironmentId" formControlName="environmentServerId"
+          placeholder="-- Select Server Environment --">
+          <nb-option value="" disabled selected>-- Select Server Environment --</nb-option>
+          <nb-option *ngFor="let serverenvironments of dataServerenvironment"
+            value="{{ serverenvironments.id}}">{{ serverenvironments.name}}</nb-option>
+        </nb-select>
+        <br><br>
+              <div *ngIf="m['environmentServerId'].touched && m['environmentServerId'].invalid"
+        class="alert alert-danger">
+        <div *ngIf="m['environmentServerId'].errors && m['environmentServerId'].errors['required']">Server
+          Environment is required.</div>
+      </div>
+        <!-- <br /><br />
+        <div *ngIf="f['serverEnvironmentId'].touched && f['serverEnvironmentId'].invalid"
+          class="alert alert-danger">
+          <div *ngIf="f['serverEnvironmentId'].errors && f['serverEnvironmentId'].errors['required']">Server
+            Environment is required.</div>
+        </div> -->
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="label col-sm-3" for="modelId"> Model ID <span class="red">*</span></label>
+      <div class="col-sm-9">
+        <nb-select fullWidth id="rdsId" formControlName="modelId">
+          <nb-option value="">-- Select Model ID --</nb-option>
+           <nb-option *ngFor="let dataModels of dataModel" value="{{ dataModels.id}}">{{ dataModels.rdsId}}</nb-option>
+        </nb-select>
+      <br><br>
+            <div *ngIf="m['modelId'].touched && m['modelId'].invalid" class="alert alert-danger">
+              <div *ngIf="m['modelId'].errors && m['modelId'].errors['required']">Model ID is
+                required.</div>
+            </div>
+  </div>
+    </div>
+    <div class="form-group row">
+      <div class="offset-sm-3 col-sm-9">
+          <button type="submit" nbButton status="primary" style="margin-right: 10px;" [disabled]="(Mcform.invalid)"> Save</button>
+          <button type="reset" nbButton status="danger" [disabled]="Mcform.pristine" (click)="resetMcform()"> Reset </button>
+      </div>
+  </div>
+
+  </form>

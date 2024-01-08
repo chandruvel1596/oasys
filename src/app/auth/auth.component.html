@@ -1,0 +1,28 @@
+<nb-layout-column class="custom-layout">
+    <div class="background-body row">
+        <div class="bg-1 col-md-7" > </div>
+        <div class="content-display col-md-5">
+          <div class="header">
+            <!-- <span class="text-style"> OASYS RDS -->
+            <!-- <img id="profile-img" src="assets/images/oasys_mainlogo.png" class="main-logo" /> -->
+                   
+                <!-- </span> -->     
+          </div>
+          <div class="bg-2">
+            <router-outlet></router-outlet>
+
+
+          </div>
+          <div style="padding-top: 5px; text-align: center;">
+            <span class="label">
+              Copyrights © {{year}} <b>OASYS</b> Cybernetics Pvt Ltd. All rights reserved.
+                </span>
+                <div class="label"><a href="https://oasys.co/privacy-policy.html" target="_blank">Privacy Policy </a>|
+                  <a href="https://oasys.co/terms.html" target="_blank">Terms & Condition</a>
+          </div>
+          </div>
+        </div>
+    
+    </div>
+
+</nb-layout-column>

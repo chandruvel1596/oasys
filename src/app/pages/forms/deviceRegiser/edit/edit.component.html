@@ -1,0 +1,93 @@
+<div class="row">
+    <div class="col-md-10">
+      <nb-card>
+        <nb-card-header>Edit Device Detail</nb-card-header>
+        <nb-card-body>
+          <form [formGroup]="form" (ngSubmit)="submit()">
+            <div class="form-group row">
+              <label for="inputModel" class="label col-sm-3 col-form-label">Make/Model/RDsID <span class="red">*</span></label>
+              <div class="col-sm-9">
+                
+                <nb-select fullWidth id="deviceModelId" formControlName="deviceModelId"  placeholder="-- Select Make/Model/RDsID --">
+                  <nb-option value="">-- Select Make/Model/RDsID --</nb-option>
+                   <nb-option *ngFor="let dataModels of dataModel" value="{{ dataModels.id}}">{{ dataModels.companyName+'/'+dataModels.name+'/'+dataModels.rdsId}}</nb-option>
+                </nb-select>
+                <br/><br/>
+                <div *ngIf="f['deviceModelId'].touched && f['deviceModelId'].invalid" class="alert alert-danger">
+                    <div *ngIf="f['deviceModelId'].errors && f['deviceModelId'].errors['required']">Make/Model/RDsID is required.</div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputDeviceSerial" class="label col-sm-3 col-form-label">Device Serial No <span class="red">*</span></label>
+              <div class="col-sm-9">
+                <input type="text" nbInput (keypress)="omit_special_char($event)" fullWidth id="serialNo" placeholder="Device Serial No" formControlName="serialNo" maxlength="15">
+                <br/><br/>
+                
+                <div *ngIf="f['serialNo'].touched && f['serialNo'].invalid" class="alert alert-danger">
+                    <div *ngIf="f['serialNo'].errors && f['serialNo'].errors['required']">Device Serial No is required.</div>
+                    <div *ngIf="f['serialNo'].errors['maxlength']">
+                        Device Serial No can be max 15 characters long.
+                    </div>
+                </div>
+              </div>
+              
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 label">Device Status <span class="red">*</span></label>
+              <div class="col-sm-9">
+                <nb-radio-group formControlName="activeStatus" name='activeStatus'>
+                  <nb-radio *ngFor="let dataStatuss of dataStatus" value="{{ dataStatuss.id}}" disabled>{{ dataStatuss.name}}</nb-radio>
+                  <!-- <nb-radio disabled value="0">In Active</nb-radio> -->
+                </nb-radio-group>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputEmail1" class="label col-sm-3 col-form-label">Server Environment <span class="red">*</span></label>
+              <div class="col-sm-9">
+                <!-- <nb-select fullWidth id="serverEnvironmentId" formControlName="serverEnvironmentId" placeholder="-- Select Server Environment --">
+                  <nb-option value="">-- Select Server Environment --</nb-option>
+                   <nb-option *ngFor="let serverenvironments of dataServerenvironment" value="{{ serverenvironments.id}}">{{ serverenvironments.name}}</nb-option>
+                </nb-select> -->
+                <nb-select fullWidth id="serverEnvironmentId" formControlName="serverEnvironmentId" placeholder="-- Select Server Environment --" >
+                  <nb-option *ngFor="let serverenvironments of dataServerenvironment" value="{{ serverenvironments.id}}">{{ serverenvironments.name}}</nb-option>
+                  <!-- <nb-option value="">-- Select Server Environment --</nb-option> -->
+               </nb-select>
+                <br/><br/>
+                <div *ngIf="f['serverEnvironmentId'].touched && f['serverEnvironmentId'].invalid" class="alert alert-danger">
+                    <div *ngIf="f['serverEnvironmentId'].errors && f['serverEnvironmentId'].errors['required']">Server Environment is required.</div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 label">Remarks</label>
+              <div class="col-sm-9">
+                <textarea rows="5" nbInput (keypress)="omit_special_char2($event)"fullWidth shape="round"  placeholder="Remarks" formControlName="remarks" name='remarks' maxlength="256"></textarea>
+                <div *ngIf="f['remarks'].touched && f['remarks'].invalid" class="alert alert-danger">
+                    <div *ngIf="f['remarks'].errors['maxlength']">
+                      Remarks can be max 256 characters long.
+                    </div>
+                </div>
+              </div>
+          </div>
+            <div class="form-group row">
+                <label class="col-sm-3 label">Date/Time</label>
+                <div class="col-sm-9">
+                  <input type="text" class="createdDate" id="createdDate" formControlName="createdDate" >
+                    <!-- <p class="col-sm-6" formControlName="createdDate"></p> -->
+                </div>
+            </div>
+            <div class="form-group row">
+              <div class="offset-sm-3 col-sm-9">
+                <button type="submit" nbButton status="primary" [disabled]="!form.valid" style="margin-right: 10px;">Update</button>
+                <button type="cancel" nbButton status="danger" (click)="cancel()">Cancel</button>
+                <!-- <button type="button" nbButton status="default" status="danger" (click)="showToast('success','Device Registered successfully');">show</button> -->
+              </div>
+            </div>
+          </form>
+        </nb-card-body>
+      </nb-card>
+    
+    </div>
+
+  </div>

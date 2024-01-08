@@ -1,0 +1,36 @@
+@import '../@theme/styles/themes';
+
+// ::ng-deep nb-menu ul.menu-items li:last-child {
+//   font-size: 14px;
+//   //position: absolute;
+//   bottom: 0;
+//   left: 0;
+//   width: 100%;
+//   text-align: center;
+//   padding: 10px;
+//   background-color: #f8f9fa;
+//   background: white !important;
+// }
+
+@include nb-install-component() {
+  ::ng-deep router-outlet + * {
+    display: block;
+    animation: fade 1s;
+
+    @keyframes fade {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+
+
+
+
+

@@ -1,0 +1,151 @@
+ <div class="row">
+  <div class="col-xxxl-3 col-md-4 dashboard-card" *ngFor="let statusCard of statusCards">
+    <ngx-status-card  [title]="statusCard.title" [type]="statusCard.type" [value]="statusCard.value">
+      <i [ngClass]="statusCard.iconClass"></i>
+    </ngx-status-card>
+
+  </div> 
+</div> 
+
+  <!-- <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div *ngFor="let chunk of chunks; let i = index" class="carousel-item" [class.active]="i === 0">
+        <div class="row">
+          <div class="col-12">
+            <div class="row">
+              <div class="col-xxl-4 col-md-6" *ngFor="let statusCard of chunk">
+                <ngx-status-card [title]="statusCard.title" [type]="statusCard.type" [value]="statusCard.value">
+                  <i [ngClass]="statusCard.iconClass"></i>
+                </ngx-status-card>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div> -->
+  
+
+
+
+  <!-- <div class="col-xxxl-9 col-xl-12">
+    <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
+    </ng2-smart-table>
+  </div> -->
+
+
+<div class="row" *ngIf="total_device">
+  <div class="col-xl-6 col-12 ">
+    <nb-card class="nb-card">
+
+      <nb-card-body>
+        <div class="arrow-pointer">
+          <i class="fas fa-chart-bar fa-lg"></i>
+        </div>
+
+        <ngx-d3-bar></ngx-d3-bar>
+      </nb-card-body>
+    </nb-card>
+  </div>
+  <div class="col-xl-6 col-12">
+
+    <nb-card class="nb-card">
+
+      <nb-card-body>
+        <div class="arrow-pointer">
+          <i class="fas fa-chart-pie fa-lg"></i>
+        </div>
+
+
+        <ngx-d3-pie></ngx-d3-pie>
+
+
+      </nb-card-body>
+    </nb-card>
+  </div>
+
+</div>
+
+
+<!-- <div class="row">
+  <div class="col-xxxl-3 col-xxl-4 col-lg-5 col-md-6">
+    <ngx-temperature></ngx-temperature>
+  </div>
+
+  <div class="col-xxxl-9 col-xxl-8 col-lg-7 col-md-6">
+    <ngx-electricity></ngx-electricity>
+  </div>
+</div> -->
+
+<!-- <div class="row">
+  <div class="col-xxxl-9 col-xl-12">
+    <ngx-rooms></ngx-rooms>
+  </div>
+
+  <div class="col-xxxl-3 col-xxl-4 col-lg-7 col-md-6">
+    <ngx-contacts></ngx-contacts>
+  </div>
+
+  <div class="col-xxxl-3 col-xxl-4 col-lg-5 col-md-6">
+    <ngx-solar [chartValue]="solarValue"></ngx-solar>
+
+    <ngx-kitten></ngx-kitten>
+  </div>
+
+  <div class="col-xxxl-3 col-xxl-4 col-md-5">
+    <ngx-traffic></ngx-traffic>
+    <ngx-weather></ngx-weather>
+  </div>
+
+  <div class="col-xxxl-6 col-xxl-12 col-md-7">
+    <ngx-security-cameras></ngx-security-cameras>
+  </div>
+</div> -->
+
+<!-- <div class="row">
+  <div class="col-md-8">
+    <div class="row">
+    <div class="col-md-6 dashboard-card" *ngFor="let statusCard of statusCards">
+      <ngx-status-card  [title]="statusCard.title" [type]="statusCard.type" [value]="statusCard.value">
+        <i [ngClass]="statusCard.iconClass"></i>
+      </ngx-status-card>
+  
+    </div>
+  </div>
+
+  </div>
+  <div class="col-md-4">
+    <nb-card class="nb-card">
+
+      <nb-card-body>
+        <div class="arrow-pointer">
+          <i class="fas fa-chart-bar fa-sm"></i>
+        </div>
+
+        <ngx-d3-bar></ngx-d3-bar>
+      </nb-card-body>
+    </nb-card>
+
+    <nb-card class="nb-card">
+
+      <nb-card-body>
+        <div class="arrow-pointer">
+          <i class="fas fa-chart-pie fa-sm"></i>
+        </div>
+
+
+        <ngx-d3-pie></ngx-d3-pie>
+
+
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div> -->

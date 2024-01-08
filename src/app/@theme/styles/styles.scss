@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap');
+
+// themes - our custom or/and out of the box themes
+@import 'themes';
+
+// framework component themes (styles tied to theme variables)
+@import '@nebular/theme/styles/globals';
+@import '@nebular/auth/styles/globals';
+
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/mixins';
+@import 'bootstrap/scss/grid';
+@import '~animate.css/animate.css';
+
+// loading progress bar theme
+@import './pace.theme';
+
+@import './layout';
+@import './overrides';
+
+// install the framework and custom global styles
+@include nb-install() {
+
+  // framework global styles
+  @include nb-theme-global();
+  @include nb-auth-global();
+
+  @include ngx-layout();
+  // loading progress bar
+  @include ngx-pace-theme();
+
+  @include nb-overrides();
+};
+
+.navigation .link nb-icon {
+  display: none !important;
+}
+
+nb-user .user-name{
+  color: black !important; 
+  font-weight:2px !important;
+  font-size: 18px !important;
+  cursor: pointer;
+}
+
+nb-user .user-name:hover{
+  color:white !important;
+  text-decoration: underline;
+}
+
+ngx-status-card nb-card{
+   background-image: linear-gradient(to right,rgb(92, 84, 112,0.1),rgb(63, 46, 62,0.3));
+   box-shadow: inset 0 0 12px rgb(63, 46, 62,0.5) ;
+   border-radius: 15px;
+   
+}
+
+.nb-card{
+
+  box-shadow:  0px 0px 8px 1px rgb(63, 46, 62,0.5);
+  border-radius: 10px;
+
+}
+
+
+.menu-items a:hover{
+  background-color: rgb(157, 28, 250,0.6) !important;
+  color: white !important;
+
+}
+
+
+.menu-items a:hover g{
+  color: white !important;
+
+}
+
+.highlight{
+  background-color: rgb(157, 28, 250,0.4) !important;
+  color: white !important;
+  border-top-left-radius: 20px !important;
+  border-bottom-left-radius: 20px !important;
+  position: relative !important;
+  padding-right: 20px !important;
+
+}
+
+.highlight::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -20px; /* Adjust this value for the width of the curved indication */
+  width: 0;
+  height: 0;
+  border-top: 24px solid transparent;
+  border-bottom: 24px solid transparent;
+  border-left: 20px solid rgb(157, 28, 250, 0.4);
+  z-index: 1; /* Ensure the pseudo-element is above other elements */
+}
+
+.highlight:hover::after {
+  border-left: 20px solid rgb(157, 28, 250, 0.6);
+
+}
+
+.highlight g{ 
+  color: white !important;
+
+}
+
+// .menu-items a:active{
+//   background-color: rgb(157, 28, 250,0.6) !important;
+//   color: white !important;
+
+// }
+
+nb-icon .eva-shield-off-outline{
+  width:15px
+}
+
+nb-icon .eva-shield-outline{
+  width:15px
+}
+
+
+// dashboard bar chart
+ 
+
+// dashboard pie chart
+svg .pie-chart{
+
+   transform: translate(265px,170px) ;
+
+}
+
+table {
+  border-collapse: collapse; /* Collapses borders into a single border */
+  width: 100%; /* Set the table width as needed */
+}
+
+thead
+  tr{
+      background-color: rgb(130, 148, 196,0.3);
+
+  }
+
+  th, td {
+      border: 0.5px solid rgb(0, 0, 0,0.3) !important; /* Add a 1px solid black border to table cells */
+      text-align: center !important; /* Center cell content horizontally */
+    }
+
+h2 {
+  font-family: "Jost",sans-serif;
+  color:rgb(0, 0, 0,0.5);
+  text-shadow: 0px 0px 2px #b393d3, 0px 0px 5px #b393d3
+
+}
+
+//Datatable buttons
+.dt-button{
+  background-color: #fcfcfcf0 !important;
+  font-weight: 500 !important;
+}
+
+//menu color
+.active{
+  color: #222b45 !important
+}
+
+nb-menu .menu-item a.active .menu-icon{
+  color: #8f9bb3 !important;
+}
+

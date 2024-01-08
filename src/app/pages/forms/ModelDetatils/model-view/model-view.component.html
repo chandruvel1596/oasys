@@ -1,0 +1,80 @@
+<div class="row">
+    <div class="col-md-10">
+      <nb-card class="nb-card">
+        <nb-card-header>View Device Detail</nb-card-header>
+        <nb-card-body>
+          <form [formGroup]="form">
+            <div class="form-group row">
+              <label for="inputModel" class="label col-sm-3 col-form-label">Make/Model <span class="red">*</span></label>
+              <div class="col-sm-9">
+                
+                <nb-select fullWidth id="deviceModelId" formControlName="deviceModelId"  placeholder="-- Select Make/Model/RDsID --">
+                   <nb-option *ngFor="let dataModels of dataModel" value="{{ dataModels.id}}">{{ dataModels.companyName+' - '+dataModels.name+' - '+dataModels.rdsId}}</nb-option>
+                </nb-select>
+                <br/><br/>
+                <div *ngIf="f['deviceModelId'].touched && f['deviceModelId'].invalid" class="alert alert-danger">
+                    <div *ngIf="f['deviceModelId'].errors && f['deviceModelId'].errors['required']">Make/Model is required.</div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputDeviceSerial" class="label col-sm-3 col-form-label">Device Serial No <span class="red">*</span></label>
+              <div class="col-sm-9">
+                <input type="text" nbInput fullWidth id="serialNo" placeholder="Serial No" formControlName="serialNo">
+                <br/><br/>
+                
+                <div *ngIf="f['serialNo'].touched && f['serialNo'].invalid" class="alert alert-danger">
+                    <div *ngIf="f['serialNo'].errors && f['serialNo'].errors['required']">Device Serial No is required.</div>
+                  </div>
+              </div>
+              
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 label">Device Status <span class="red">*</span></label>
+              <div class="col-sm-9">
+                <nb-radio-group formControlName="activeStatus" name='activeStatus'>
+                  <nb-radio *ngFor="let dataStatuss of dataStatus" value="{{ dataStatuss.id}}">{{ dataStatuss.name}}</nb-radio>
+                  <!-- <nb-radio disabled value="0">In Active</nb-radio> -->
+                </nb-radio-group>
+              </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 label">Remarks</label>
+                <div class="col-sm-9">
+                  <textarea rows="5" nbInput fullWidth shape="round"  placeholder="Remarks" formControlName="remarks" name='remarks'></textarea>
+                </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="inputEmail1" class="label col-sm-3 col-form-label">Server Environment <span class="red">*</span></label>
+              <div class="col-sm-9">
+                <nb-select fullWidth id="serverEnvironmentId" formControlName="serverEnvironmentId" placeholder="-- Select Server Environment --">
+                   <nb-option *ngFor="let serverenvironments of dataServerenvironment" value="{{ serverenvironments.id}}">{{ serverenvironments.name}}</nb-option>
+                </nb-select>
+                <br/><br/>
+                <div *ngIf="f['serverEnvironmentId'].touched && f['serverEnvironmentId'].invalid" class="alert alert-danger">
+                    <div *ngIf="f['serverEnvironmentId'].errors && f['serverEnvironmentId'].errors['required']">Server Environment is required.</div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 label">Date/Time</label>
+                <div class="col-sm-9">
+                  <input type="text" class="createdDate" id="createdDate" formControlName="createdDate" >
+                </div>
+            </div>
+            <div class="form-group row">
+              <div class="offset-sm-3 col-sm-9">
+                <button type="cancel" nbButton status="danger" (click)="cancel()">Back</button>
+                <!-- <button type="submit" nbButton status="primary" [disabled]="!form.valid" style="margin-right: 10px;">Submit</button>
+                <button type="cancel" nbButton status="danger" (click)="cancel()">Cancel</button> -->
+
+              </div>
+            </div>
+          </form>
+        </nb-card-body>
+      </nb-card>
+    
+    </div>
+
+  </div>

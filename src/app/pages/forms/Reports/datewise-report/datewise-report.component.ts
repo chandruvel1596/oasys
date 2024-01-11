@@ -106,7 +106,7 @@ export class DatewiseReportComponent implements OnInit {
               return message;
           
             },
-            customize:(doc)=>{
+            customize:(doc:any)=>{
               console.log(doc)
               doc.pageMargins = [ 20, 20, 20, 20 ];
     doc.defaultStyle.fontSize = 7;

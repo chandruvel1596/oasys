@@ -94,7 +94,7 @@ export class KeyRotationReportComponent implements OnInit {
             exportOptions: {
                  columns: [0,1,2,3,4,5,6,7,8,9]
              },
-             customize:(doc)=>{
+             customize:(doc:any)=>{
               console.log(doc)
               doc.pageMargins = [ 20, 20, 20, 20 ];
     doc.defaultStyle.fontSize = 7;

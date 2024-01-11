@@ -16,18 +16,20 @@ module.exports = {
                 ".eslintrc.{js,cjs}"
             ],
             "parserOptions": {
-                "sourceType": "script"
+                "sourceType": "module" // Change this to "module"
             }
         }
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
-        "ecmaVersion": "latest",
-        "sourceType": "module"
+        "ecmaVersion": 2021,
+        "sourceType": "module",
+        "project": "./tsconfig.json" // Path to your tsconfig.json
     },
     "plugins": [
         "@typescript-eslint"
     ],
     "rules": {
+        // Add any specific rules you want to enforce
     }
-}
+};

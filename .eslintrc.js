@@ -1,4 +1,5 @@
 module.exports = {
+    "ignorePatterns": ["node_modules/", "dist/"],
     "env": {
         "browser": true,
         "es2021": true
@@ -30,7 +31,7 @@ module.exports = {
         "@typescript-eslint"
     ],
     "rules": {
-        "ignorePatterns": ["node_modules/", "dist/"],
+        
         // Add any specific rules you want to enforce
     }
    

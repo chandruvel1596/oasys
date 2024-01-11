@@ -193,17 +193,17 @@ export class DeRegisteredDeviceReportComponent implements OnInit {
   public captureScreen()  
   { 
     $('.row1').hide();  
-    var data = document.getElementById('contentToConvert');  //Id of the table
+    const data = document.getElementById('contentToConvert');  //Id of the table
     html2canvas(data).then(canvas => {  
       // Few necessary setting options  
-      let imgWidth = 208;   
-      let pageHeight = 295;    
-      let imgHeight = canvas.height * imgWidth / canvas.width;  
-      let heightLeft = imgHeight;  
+      const imgWidth = 208;   
+      const pageHeight = 295;    
+      const imgHeight = canvas.height * imgWidth / canvas.width;  
+      const heightLeft = imgHeight;  
 
       const contentDataURL = canvas.toDataURL('image/png')  
-      let pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF  
-      let position = 0;  
+      const pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF  
+      const position = 0;  
       pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)  
       pdf.save('DeRegistered-device-details-Report.pdf'); // Generated PDF   
     });  

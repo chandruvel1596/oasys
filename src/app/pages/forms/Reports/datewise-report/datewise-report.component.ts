@@ -82,7 +82,7 @@ export class DatewiseReportComponent implements OnInit {
              },
              message: ()=>{
               let message = "";
-              let deviceStatus=(this.f.registeredDeviceStatus.value==="1"?"Registered":"De-Registered")
+              const deviceStatus=(this.f.registeredDeviceStatus.value==="1"?"Registered":"De-Registered")
               if(this.f.rdsId.value==="1"){
                 message= JSON.stringify( {"From Date":this.datePipe.transform( this.f.fromDate.value, 'dd-MM-yyyy' ),
                          "To Date": this.datePipe.transform(this.f.toDate.value, 'dd-MM-yyyy'),
@@ -402,17 +402,17 @@ export class DatewiseReportComponent implements OnInit {
   public captureScreen()  
   {  
     $('.row1').hide(); 
-    var data = document.getElementById('contentToConvert');  //Id of the table
+    const data = document.getElementById('contentToConvert');  //Id of the table
     html2canvas(data).then(canvas => {  
       // Few necessary setting options  
-      let imgWidth = 220;   
-      let pageHeight = 295;    
-      let imgHeight = canvas.height * imgWidth / canvas.width;  
-      let heightLeft = imgHeight;  
+      const imgWidth = 220;   
+      const pageHeight = 295;    
+      const imgHeight = canvas.height * imgWidth / canvas.width;  
+      const heightLeft = imgHeight;  
 
       const contentDataURL = canvas.toDataURL('image/png')  
-      let pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF  
-      let position = 8;  
+      const pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF  
+      const position = 8;  
       pdf.addImage(contentDataURL, 'PNG', 8, position, imgWidth - 24, imgHeight - 24)  
       pdf.save('Date-wise-Report.pdf'); // Generated PDF   
     });  

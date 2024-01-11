@@ -28,7 +28,7 @@ export class ViewComponent implements OnInit {
     private toastrService:NbToastrService,private titleService:pageTitle) { }
 
   ngOnInit(): void {
-    let id = this.route.snapshot.params['id'];
+    const id = this.route.snapshot.params['id'];
     
       
       this.form = new FormGroup({

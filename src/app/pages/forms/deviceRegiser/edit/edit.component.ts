@@ -153,7 +153,7 @@ export class EditComponent implements OnInit {
    * @return response()
    */
   submit(){
-    let form_array = this.form.value;
+    const form_array = this.form.value;
     delete form_array['createdDate'];
     form_array['id'] = this.id;
      

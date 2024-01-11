@@ -18,7 +18,7 @@ import { LoaderService } from '../../../Loader/service/loader.service';
 export class HeaderComponent implements OnInit, OnDestroy {
 
   private destroy$: Subject<void> = new Subject<void>();
-  userPictureOnly: boolean = false;
+  userPictureOnly = false;
   user: Array<object>;
   isLoggedIn = false;
   themes = [
@@ -68,7 +68,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.currentTheme = this.themeService.currentTheme;
-    let userName = localStorage.getItem('userName');
+    const userName = localStorage.getItem('userName');
     //console.log(userName);
     // this.userService.getUsers()
     //   .pipe(takeUntil(this.destroy$))

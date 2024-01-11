@@ -32,7 +32,7 @@ import { LoaderService } from '../../../Loader/service/loader.service';
   `,
 })
 export class OneColumnLayoutComponent {
-  animateEmitter:boolean=false;
+  animateEmitter=false;
 
   constructor(private loaderservice:LoaderService,){
 

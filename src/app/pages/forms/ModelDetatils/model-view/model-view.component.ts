@@ -24,7 +24,7 @@ export class ModelViewComponent implements OnInit {
   constructor(private route : ActivatedRoute,public registerdeviceService:RegisterdeviceService,private router:Router,public datepipe: DatePipe,private toastrService:NbToastrService) { }
 
   ngOnInit(): void {
-    let id = this.route.snapshot.params['id'];
+    const id = this.route.snapshot.params['id'];
     
       
       this.form = new FormGroup({

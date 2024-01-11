@@ -8,7 +8,7 @@ import { PositionModel } from '../entity/position.model';
 })
 export class MapComponent implements OnInit {
   position: PositionModel = null;
-  zoom: number = 1;
+  zoom = 1;
 
   @Input()
   public set searchedPosition(position: PositionModel) {

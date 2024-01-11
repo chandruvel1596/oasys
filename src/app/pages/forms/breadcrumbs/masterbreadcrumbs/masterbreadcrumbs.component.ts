@@ -33,7 +33,7 @@ export class MasterbreadcrumbsComponent implements OnInit {
     // console.log(url)
     const parts = url.split('/');
     // console.log('parts', parts)
-    let breadcrumbs: Array<{ label: string, url: string }> = [];
+    const breadcrumbs: Array<{ label: string, url: string }> = [];
     const master = ['modelDetailList', 'vendorDetailList', 'deviceregisterList']
     const reports = ['registeredDeviceReport', 'deRegisteredDeviceReport', 'keyRotationReport', 'datewiseReport']
     const settings = ['globalConfig', 'apk']

@@ -2,8 +2,8 @@ import { AbstractControl } from "@angular/forms";
 
 export class matchPassword {
     static  matchPassword (match:AbstractControl):any {
-        let password = match.get('password')?.value;
-        let cpassword = match.get('repeatPassword')?.value;
+        const password = match.get('password')?.value;
+        const cpassword = match.get('repeatPassword')?.value;
         if(password!==cpassword){
            match.get('repeatPassword')?.setErrors({confirmPassword:true})
         }   
@@ -23,8 +23,8 @@ export class matchPassword {
 
     export class matchResetPassword {
         static  matchPassword (match:AbstractControl):any {
-            let password = match.get('newPassword')?.value;
-            let cpassword = match.get('confirmPassword')?.value;
+            const password = match.get('newPassword')?.value;
+            const cpassword = match.get('confirmPassword')?.value;
             if(password!=cpassword){
                match.get('confirmPassword')?.setErrors({confirmPassword:true})
             }

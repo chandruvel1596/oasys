@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   errors: string[];
   messages: string[];
   
-  submitted: boolean=false;
+  submitted=false;
   rememberMe: boolean;
   public user: any = {};
   users: Users = new Users()

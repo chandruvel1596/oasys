@@ -9,9 +9,9 @@ import { StorageService } from '../../../../_services/storage.service';
 })
 export class VendorViewComponent implements OnInit {
 
-  active:boolean=false;
+  active=false;
   orgID:any
-  cardWidth:string='100%'
+  cardWidth='100%'
   
 
   constructor(private router: Router,private route: ActivatedRoute,private storageService:StorageService) {

@@ -24,12 +24,12 @@ export class BulkdetailComponent implements OnInit {
   dataStatus: any;
   datafile: any;
   invalidtype = false;
-  fileuploaded: boolean = true;
+  fileuploaded = true;
   dataServerenvironment: any;
   title = 'Bulk Device Detail';
   failuredata:any[];
   successdata:any[];
-  swap:boolean=false
+  swap=false
   @ViewChild('myInput')
 myInputVariable: ElementRef;
   constructor(public registerdeviceService: RegisterdeviceService, private router: Router, public datepipe: DatePipe,

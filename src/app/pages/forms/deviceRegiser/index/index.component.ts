@@ -18,7 +18,7 @@ export class IndexComponent implements OnInit {
   datas: any;
   registered:any;
   notRegistered:any;
-  deRegistered:any;;
+  deRegistered:any;
   constructor(private service: RegisterdeviceService,
     private storageService:StorageService,
     private router:Router,private toastrService:NbToastrService,private dialogService: NbDialogService,private titleService:pageTitle,
